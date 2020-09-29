@@ -1,10 +1,10 @@
 <template>
-  <v-menu transition="scale-transition" offset-y v-model="menu" :open-on-click="false">
+  <v-menu v-model="menu" transition="scale-transition" offset-y :open-on-click="false">
     <template v-slot:activator="data">
-      <v-text-field v-model="dateText" :label="label" prepend-icon="mdi-calendar" v-on="data.on" @click:prepend="menu = true"></v-text-field>
+      <v-text-field v-model="dateText" :label="label" prepend-icon="mdi-calendar" v-on="data.on" @click:prepend="menu = true" />
     </template>
     <template v-slot:default>
-      <v-date-picker no-title :value="datePicker" :first-day-of-week="1" no-title scrollable @input="onPickDate($event)" width="290" locale="ru-ru"></v-date-picker>
+      <v-date-picker no-title :value="datePicker" :first-day-of-week="1" scrollable width="290" locale="ru-ru" @input="onPickDate($event)" />
     </template>
   </v-menu>
 </template>

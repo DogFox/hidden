@@ -2,7 +2,7 @@
   <div>
     <v-data-table dense :headers="headersList" :items="items" class="elevation-1" hide-default-header>
       <template v-slot:top>
-        <sphera-table-toolbar :description="description" @click="initialize"></sphera-table-toolbar>
+        <sphera-table-toolbar :description="description" @click="initialize" />
       </template>
       <template v-slot:header="{ props: { headers: vheaders } }">
         <thead>
@@ -27,7 +27,7 @@
         <v-btn color="primary" @click="fetchData">Reset</v-btn>
       </template>
     </v-data-table>
-    <slot v-if="modalDialogVisible" :item="record" name="modal" :slotEmit="eventBus"></slot>
+    <slot v-if="modalDialogVisible" :item="record" name="modal" :slotEmit="eventBus" />
   </div>
 </template>
 
@@ -99,6 +99,8 @@ export default Vue.extend({
       }
     },
     editItem(item: any) {
+      // TODO
+      // @ts-ignore 
       this.editedIndex = this.items.indexOf(item);
       this.record = Object.assign({}, item);
       this.modalDialogVisible = true;

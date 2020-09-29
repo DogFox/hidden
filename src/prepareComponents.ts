@@ -8,6 +8,7 @@ import ActionDialog from './components/ActionDialog.vue';
 import LoginDialog from './components/LoginDialog.vue';
 import AppToolbar from './components/AppToolbar.vue';
 import BottomNavigation from './components/BottomNavigation.vue';
+import SpheraActionBtn from './components/SpheraActionBtn.vue';
 
 Vue.component('SpheraTable', SpheraTable);
 Vue.component('SpheraInput', SpheraInput);
@@ -17,3 +18,4 @@ Vue.component('ActionDialog', ActionDialog);
 Vue.component('AppToolbar', AppToolbar);
 Vue.component('BottomNavigation', BottomNavigation);
 Vue.component('LoginDialog', LoginDialog);
+Vue.component('SpheraActionBtn', SpheraActionBtn);

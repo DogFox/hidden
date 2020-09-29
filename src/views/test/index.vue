@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-row>
-      <v-col> </v-col>
+      <v-col />
     </v-row>
     <v-row>
       <v-col>
-        <sphera-date-field label="Выберите дату" v-model="date"></sphera-date-field>
+        <sphera-date-field v-model="date" label="Выберите дату" />
       </v-col>
       {{ date }}
     </v-row>
@@ -37,10 +37,10 @@ export default Vue.extend({
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then(response => {
+        .then((response: any) => {
           console.log(response);
         })
-        .catch(error => {
+        .catch((error: any) => {
           console.log(error.response);
         });
     },

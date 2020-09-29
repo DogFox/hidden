@@ -3,16 +3,16 @@
     <v-list dense nav class="py-0">
       <v-list-item two-line :class="miniVariant && 'px-0'">
         <v-list-item-avatar>
-          <img src="https://randomuser.me/api/portraits/men/81.jpg" />
+          <img src="https://randomuser.me/api/portraits/men/81.jpg">
         </v-list-item-avatar>
 
         <v-list-item-content>
           <v-list-item-title>Автосфера</v-list-item-title>
-          <v-list-item-subtitle></v-list-item-subtitle>
+          <v-list-item-subtitle />
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider />
 
       <v-list-item v-for="item in items" :key="item.title" link :to="item.path">
         <v-list-item-icon>
@@ -39,11 +39,13 @@ export default Vue.extend({
     return {
       drawer: true,
       items: [
-        { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
-        { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
-        { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },
-        { title: 'Поставщики', icon: 'mdi-help-box', path: '/suppliers' },
-        { title: 'Тестирование компонентов', icon: 'mdi-help-box', path: '/test' },
+        { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
+        { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts' },
+        // { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
+        // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
+        // { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },
+        // { title: 'Поставщики', icon: 'mdi-help-box', path: '/suppliers' },
+        { title: 'Тестирование компонентов', icon: 'mdi-image', path: '/test' },
       ],
       color: 'primary',
     };

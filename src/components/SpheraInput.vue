@@ -17,7 +17,7 @@
     @click:prepend-inner="$emit('prependInnerClick')"
     @input="$emit('input', $event)"
     @change="$emit('change', $event)"
-  ></v-text-field>
+  />
 </template>
 
 <script lang="ts">

@@ -1,15 +1,15 @@
 <template>
   <v-app>
     <!-- Авторизация -->
-    <LoginDialog />
+    <!-- <LoginDialog /> -->
     <!-- Боковая менюшка -->
     <BottomNavigation />
     <!-- Тулбар сверху -->
-    <AppToolbar> </AppToolbar>
+    <AppToolbar />
     <!-- Основной контент -->
-    <v-content>
+    <v-main class="bg">
       <router-view />
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -24,3 +24,12 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+
+.bg {
+    height: 100vh;
+    background: url('./assets/background.jpeg') no-repeat center center;
+    background-size: cover;
+  }
+</style>

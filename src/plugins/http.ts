@@ -2,7 +2,7 @@ import Axios, { AxiosResponse } from 'axios';
 export const axios = Axios.create({
 });
 
-const BASE_URL = 'https://localhost:5001/api/';
+const BASE_URL = 'http://127.0.0.1:8000/api/';
 export class ApiSphera {
   async get(url: string) {
 
@@ -14,7 +14,7 @@ export class ApiSphera {
   async post(url: string, item: object) {
 
     const targetUrl = BASE_URL + url;
-    return axios.post(targetUrl, item).then(response => {
+    return axios.post(targetUrl + '/', item).then(response => {
       return response.data;
     });
   }

@@ -3,12 +3,29 @@ import VueRouter from 'vue-router';
 import Order from '../views/orders/index.vue';
 import Client from '../views/clients/index.vue';
 import Account from '../views/accounts/index.vue';
+import Draft from '../views/draft/index.vue';
+import MyDrafts from '../views/mydrafts/index.vue';
+import draftid from '../views/mydrafts/draftid.vue';
 import Test from '../views/test/index.vue';
 
 Vue.use(VueRouter);
-
-
 const routes = [
+  {
+    path: '/draft',
+    name: 'draft',
+    component: Draft,
+  },
+  {
+    path: '/mydrafts',
+    name: 'mydrafts',
+    component: MyDrafts,
+  },
+  {
+    path: '/mydrafts/:draftid',
+    name: 'draftid',
+    component: draftid,
+    props: true,
+  },
   {
     path: '/orders',
     name: 'order',
