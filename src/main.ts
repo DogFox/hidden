@@ -40,7 +40,21 @@ import Vuetify, {
 } from 'vuetify/lib';
 
 
-const objs = { vuetify: new Vuetify({}) };
+const theme = {
+  themes: {
+    light: {
+      primary: '#00bcd4',
+      secondary: '#4caf50',
+      accent: '#8bc34a',
+      error: '#f44336',
+      warning: '#ffc107',
+      info: '#cddc39',
+      success: '#03a9f4',
+    },
+  },
+};
+
+const objs = { vuetify: new Vuetify({theme}) };
 Vue.use(Vuetify, {
   components: {
     VBtn,

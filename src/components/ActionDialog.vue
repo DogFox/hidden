@@ -5,15 +5,15 @@
         <v-icon>mdi-close</v-icon>
       </v-btn>
       <v-toolbar-title>{{ header }}</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items> </v-toolbar-items>
+      <v-spacer />
+      <v-toolbar-items />
     </v-toolbar>
     <v-card>
       <v-card-text>
-        <slot></slot>
+        <slot />
       </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-btn v-if="!noCancel" color="blue darken-1" text @click="onCancel($event)">{{ cancelBtnTitle }}</v-btn>
         <v-btn color="blue darken-1" text @click="onSave($event)">{{ saveBtnTitle }}</v-btn>
       </v-card-actions>

@@ -1,26 +1,26 @@
 <template>
   <v-container>
-    <v-card-title>
-      {{ record.name }}
-    </v-card-title>
-    <template v-for="(member, i) in record.members">
-      <v-card :key="i" class="mt-3">
-        <v-container>
-          <v-row>
-            <v-col cols="3">
-              <v-card-subtitle>
-                {{ member.name }}
-              </v-card-subtitle>
-            </v-col>
-            <v-col cols="3">
-              <v-card-subtitle>
-                {{ member.email }}
-              </v-card-subtitle>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </template>
+    <v-card height="100%">
+      <v-container>
+        <v-card-title>
+          {{ record.name }}
+        </v-card-title>
+        <template v-for="(member, i) in record.members">
+          <v-card :key="i" class="mt-3" color="accent">
+            <v-container pa-2>
+              <v-row>
+                <v-col cols="3">
+                  <sphera-input v-model="member.name" readonly label="Имя учатсника" />
+                </v-col>
+                <v-col cols="3">
+                  <sphera-input v-model="member.email" readonly label="Почта участника" />
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </template>
+      </v-container>
+    </v-card>
   </v-container>
 </template>
 
@@ -29,7 +29,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   props: {
-    draftid: { type: Number, default: null},
+    draftid: { type: [Number,String], default: null},
   },
   data() {
     return {

@@ -16,20 +16,26 @@
               :class="{ 'on-hover': hover }"
               @click="onClickBox(item)"
             >
-              <v-card-title class="title">
-                <v-row
-                  class="fill-height flex-column"
-                  justify="space-between"
-                >
-                  <span class="mt-4 subheading">
-                    {{ item.name }}
-                  </span>
+              <v-img
+                class="white--text align-end"
+                height="150px"
+                :src="box_background"
+              >
+                <v-card-title class="title">
+                  <v-row
+                    class="fill-height flex-column"
+                    justify="space-between"
+                  >
+                    <span class="mt-4 subheading">
+                      {{ item.name }}
+                    </span>
                   
-                  <span class="ma-0 body-1">
-                    {{ item.name }}
-                  </span>
-                </v-row>
-              </v-card-title>
+                    <span class="ma-0 body-1">
+                      {{ item.name }}
+                    </span>
+                  </v-row>
+                </v-card-title>
+              </v-img>
             </v-card>
           </v-hover>
         </v-col>
@@ -43,6 +49,7 @@ import Vue from 'vue';
 // import ClientModal from './ClientModal.vue';
 import { mydrafts } from './mydrafts';
 
+
 export default Vue.extend({
   name: 'Clients',
   // components: { ClientModal },
@@ -51,6 +58,7 @@ export default Vue.extend({
       items: [],
       headers: mydrafts.fields,
       path: mydrafts.path,
+      box_background: require('@/assets/box_background.jpg'),
     };
   },
   async created() {

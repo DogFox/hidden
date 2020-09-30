@@ -12,6 +12,8 @@
     :prepend-inner-icon="prependInnerIcon"
     :suffix="suffix"
     :type="type"
+    :readonly="readonly"
+    hide-details="auto"
     @click:append="$emit('appendClick')"
     @click:prepend="$emit('prependClick')"
     @click:prepend-inner="$emit('prependInnerClick')"
@@ -41,6 +43,7 @@ export default Vue.extend({
     appendIcon: { type: String, default: '' },
     suffix: { type: String, default: '' },
     type: { type: String, default: 'String' },
+    readonly: { type: Boolean, default: false },
   },
   data() {
     return {};
