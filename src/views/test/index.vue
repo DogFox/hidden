@@ -24,7 +24,7 @@ import Vue from 'vue';
 export default Vue.extend({
   data() {
     return {
-      file: '',
+      file: {} as any,
       data: new FormData(),
       date: null,
     };

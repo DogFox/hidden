@@ -6,7 +6,7 @@
       </v-col>
       
       <v-col>
-        <sphera-action-btn @click="addItem()">Добавить участника</sphera-action-btn>  
+        <!-- <sphera-action-btn @click="addItem()">Добавить участника</sphera-action-btn>   -->
 
         <!-- <v-btn @click="addItem()">
           Добавить участника
@@ -41,24 +41,33 @@ export default Vue.extend({
     return {
       file: '',
       items: [{id: 0, name: ''}] as any[],
-      lastId: 1,
+      lastId: 0,
       http: new this.$http(),
       boxName: 'Коробочка',
     };
   },
   methods: {
     addItem() {
-      this.items.push({id: this.lastId });
-      this.lastId++;
+      this.items.push({id: ++this.lastId });
     },
     async onDraftAll() {
-        const result = this.http.post('customer/postlist', {items: this.items, box: this.boxName});
+        const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box: this.boxName});
     },
-
     async onDraft() {
       this.items.forEach(element => {
         const result = this.http.post('customer', {id: element.id, name: element.name, email: element.email});
       });
+    },
+  },
+  watch:{ 
+    items: {
+      deep: true,
+      immediate: true,
+      handler() {
+        if( this.items[this.lastId] && this.items[this.lastId].name && this.items[this.lastId].name !== '' ) {
+          this.addItem();
+        }
+      },
     },
   },
 });

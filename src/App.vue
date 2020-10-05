@@ -3,11 +3,12 @@
     <!-- Авторизация -->
     <!-- <LoginDialog /> -->
     <!-- Боковая менюшка -->
-    <BottomNavigation />
+    <BottomNavigation v-if="isAuth" />
     <!-- Тулбар сверху -->
-    <AppToolbar />
+    <AppToolbar v-if="isAuth" />
     <!-- Основной контент -->
     <v-main class="bg">
+      <LoginPage v-if="!isAuth" />
       <router-view />
     </v-main>
   </v-app>
@@ -18,9 +19,10 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'App',
-
-  data() {
-    return {};
+  computed: {
+    isAuth(): boolean {
+      return this.$store.getters.isAuth();
+    },
   },
 });
 </script>
