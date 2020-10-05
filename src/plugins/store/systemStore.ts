@@ -19,12 +19,12 @@ const state: SystemState = {
 const getters: GetterTree<SystemState, any> = {
   // текущий токен
   getToken: (state: SystemState) => () => {
-    return state.sessionToken;
+    return localStorage.getItem('token') || state.sessionToken;
   },
 
   // аутентифицирован ли пользователь
   isAuth: (state: SystemState) => () => {
-    return !!state.sessionToken;
+    return !!(localStorage.getItem('token') || state.sessionToken);
   },
 
   getLogin: (state: SystemState) => () => {
@@ -35,6 +35,7 @@ const getters: GetterTree<SystemState, any> = {
 const mutations: MutationTree<SystemState> = {
   // устанавливаем токен
   SET_TOKEN(state, sessionToken: string) {
+    localStorage.setItem('token', sessionToken);
     state.sessionToken = sessionToken;
   },
   // Login текущего пользователя
