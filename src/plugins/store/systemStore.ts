@@ -4,15 +4,18 @@ import { Module, MutationTree, GetterTree, ActionTree } from 'vuex';
 // import { stackDate } from '../utils/helpers';
 // import { stackAppEmitter } from '../utils/emitters';
 // import { StackApi } from '../middleware/StackApi'; // для общения с бэкэндом
+import { ApiSphera } from '../http';
 
 export interface SystemState {
   sessionToken: string | undefined; // текущий токен
   user: string; // Логин
+  BACKEND_STATE_INTERVAL: number; // интервал опроса состояния бэкэнда
 }
 
 const state: SystemState = {
   sessionToken: '',
   user: '',
+  BACKEND_STATE_INTERVAL: 5000,
 };
 
 // Геттеры
@@ -30,6 +33,10 @@ const getters: GetterTree<SystemState, any> = {
   getLogin: (state: SystemState) => () => {
     return state.user;
   },
+  // интервал опроса состояния бэкэнда
+  getBackendStateInterval: (state: SystemState) => () => {
+    return state.BACKEND_STATE_INTERVAL;
+  },
 };
 
 const mutations: MutationTree<SystemState> = {
@@ -41,6 +48,10 @@ const mutations: MutationTree<SystemState> = {
   // Login текущего пользователя
   SET_LOGIN(state: SystemState, login: string) {
     state.user = login;
+  },
+  
+  SET_BACKEND_STATE_INTERVAL(state: SystemState, interval: number) {
+    state.BACKEND_STATE_INTERVAL = interval;
   },
 };
 
@@ -75,6 +86,27 @@ const actions: ActionTree<SystemState, any> = {
     commit('SET_TOKEN', '');
     // await stackAppEmitter.emitAsync('APP_USER_SIGN_OUT', store);
     // await new StackApi().logout();
+    return true;
+  },
+  async checkSystemState({ commit, state, getters }): Promise<boolean> {
+    const api = new ApiSphera();
+    try {
+
+      const rec = await api.getSystemState();
+      if (rec) {
+        console.log(rec);
+        
+        // if (!state.backendConnected) {
+        //   commit('SET_CONNECTED', true);
+        // }
+        // if (rec.пользовательФИО !== state.userName) {
+        //   commit('SET_USER', rec.пользовательФИО);
+        // }
+      }
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
     return true;
   },
 };

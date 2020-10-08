@@ -19,9 +19,32 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'App',
+  data() {
+    return {
+      intervalID: null as any | null,
+    };
+  },
   computed: {
     isAuth(): boolean {
       return this.$store.getters.isAuth();
+    },
+  },
+  async created() {
+    this.intervalID = setInterval(this.checkIsAuth, +this.$store.getters.getBackendStateInterval());
+  },
+  beforeDestroy() {
+    if (this.intervalID) {
+      clearInterval(this.intervalID); 
+    }
+  },
+  methods: {
+    async checkIsAuth() {
+      if (this.isAuth) {
+        return true;
+      }
+      else {
+        return false;
+      }
     },
   },
 });
