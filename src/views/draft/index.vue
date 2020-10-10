@@ -26,6 +26,9 @@
             <v-col>
               <sphera-input v-model="item.email" label="Email" placeholder="EMAIL участника" />
             </v-col>
+            <v-col>
+              <sphera-combobox v-model="item.cross" label="Исключение" :items="items" />
+            </v-col>
           </v-row>
         </template>
       </v-container>
@@ -40,8 +43,14 @@ export default Vue.extend({
   data() {
     return {
       file: '',
-      items: [{id: 0, name: ''}] as any[],
-      lastId: 0,
+      items: [{id: 0, name: 'test', email: 'test@test.com', cross: null},
+      {id: 1, name: 'test2', email: 'test2@test.com', cross: null},
+      {id: 2, name: 'test3', email: 'test3@test.com', cross: null},
+      {id: 3, name: 'test4', email: 'test4@test.com', cross: null},
+      {id: 4, name: 'Denis', email: 'kurovda@gmail.com', cross: null},
+      ] as any[],
+      cross: null,
+      lastId: 4,
       http: new this.$http(),
       boxName: 'Коробочка',
     };
@@ -51,7 +60,11 @@ export default Vue.extend({
       this.items.push({id: ++this.lastId });
     },
     async onDraftAll() {
-        const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box: this.boxName});
+      console.log(this.items);
+      console.log(this.cross);
+      
+      
+      // const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box: this.boxName});
     },
     async onDraft() {
       this.items.forEach(element => {

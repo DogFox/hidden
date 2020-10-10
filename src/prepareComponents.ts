@@ -10,6 +10,7 @@ import LoginPage from './components/LoginPage.vue';
 import AppToolbar from './components/AppToolbar.vue';
 import BottomNavigation from './components/BottomNavigation.vue';
 import SpheraActionBtn from './components/SpheraActionBtn.vue';
+import SpheraCombobox from './components/SpheraCombobox.vue';
 
 Vue.component('SpheraTable', SpheraTable);
 Vue.component('SpheraInput', SpheraInput);
@@ -21,3 +22,4 @@ Vue.component('AppToolbar', AppToolbar);
 Vue.component('BottomNavigation', BottomNavigation);
 Vue.component('LoginDialog', LoginDialog);
 Vue.component('LoginPage', LoginPage);
+Vue.component('SpheraCombobox', SpheraCombobox);

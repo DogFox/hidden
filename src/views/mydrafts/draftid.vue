@@ -10,25 +10,28 @@
           </v-col>
           <v-col>
             <sphera-action-btn @click="onSwop()">Перемешать</sphera-action-btn> 
+            <sphera-action-btn @click="showPairs = !showPairs">{{ showBtnLabel }}</sphera-action-btn> 
           </v-col>
         </v-row>
-        <template v-for="(member, i) in record.memberships">
-          <v-card :key="i" class="mt-3" color="accent">
-            <v-container pa-2>
-              <v-row>
-                <v-col cols="3">
-                  <sphera-input v-model="member.member_name" readonly label="Имя учатсника" />
-                </v-col>
-                <v-col cols="3">
-                  <sphera-input v-model="member.member_email" readonly label="Почта участника" />
-                </v-col>
-                <v-spacer />
-                <v-col cols="3">
-                  <sphera-input v-model="member.santa_name" readonly label="Тайный санта" />
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
+        <template v-if="showPairs">
+          <template v-for="(member, i) in record.memberships">
+            <v-card :key="i" class="mt-3" color="accent">
+              <v-container pa-2>
+                <v-row>
+                  <v-col cols="3">
+                    <sphera-input v-model="member.member_name" readonly label="Имя учатсника" />
+                  </v-col>
+                  <v-col cols="3">
+                    <sphera-input v-model="member.member_email" readonly label="Почта участника" />
+                  </v-col>
+                  <v-spacer />
+                  <v-col cols="3">
+                    <sphera-input v-model="member.santa_name" readonly label="Тайный санта" />
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </template>
         </template>
       </v-container>
     </v-card>
@@ -53,12 +56,16 @@ export default Vue.extend({
     return {
       record: {} as SecretBox,
       http: new this.$http(),
+      showPairs: false,
     };
   },
   created() {
     this.fetchData();
   },
   computed: {
+    showBtnLabel(): string {
+      return this.showPairs ? 'Скрыть пары' : 'Показать пары';
+    },
     members(): any[] {
       const arr = [] as any;
       this.record.memberships.forEach( membership => {
