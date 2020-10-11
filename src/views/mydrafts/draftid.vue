@@ -8,11 +8,26 @@
               {{ record.name }}
             </v-card-title>
           </v-col>
-          <v-col>
-            <sphera-action-btn @click="onSwop()">Перемешать</sphera-action-btn> 
-            <sphera-action-btn @click="showPairs = !showPairs">{{ showBtnLabel }}</sphera-action-btn> 
-          </v-col>
+          <template v-if="admin">
+            <v-col>
+              <sphera-action-btn @click="onSwop()">Перемешать</sphera-action-btn> 
+              <sphera-action-btn @click="showPairs = !showPairs">{{ showBtnLabel }}</sphera-action-btn> 
+            </v-col>
+          </template>
         </v-row>
+        <template v-for="(member, i) in record.santas">
+          <v-card :key="i" class="mt-3">
+            <v-container>
+              <v-row>
+                <v-col>
+                  <v-card-title>
+                    Поздравляю! Вы - тайный санта. Ваша жертва: {{ member.member_name }}
+                  </v-card-title>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </template>
         <template v-if="showPairs">
           <template v-for="(member, i) in record.memberships">
             <v-card :key="i" class="mt-3" color="accent">
@@ -57,6 +72,7 @@ export default Vue.extend({
       record: {} as SecretBox,
       http: new this.$http(),
       showPairs: false,
+      admin: false,
     };
   },
   created() {
@@ -76,7 +92,11 @@ export default Vue.extend({
   },
   methods: {
     async fetchData() {
-      this.record = await this.http.get('draft/' + this.draftid);
+      const result = await this.http.get('draftpermission/' + this.draftid);
+      if( result && result.admin ) {
+        this.admin = result.admin;
+      }
+      this.record = await this.http.get('draft/' + this.draftid, result);
     },
     async onSwop() {
       await this.http.post('draft/swop', {id: this.draftid});

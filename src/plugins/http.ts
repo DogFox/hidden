@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Axios, { AxiosResponse } from 'axios';
+import Axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { store } from './store/index';
 export const axios = Axios.create({
 });
@@ -10,13 +10,14 @@ export class ApiSphera {
   
   private headers = {} as any;
   
-  async get(url: string) {
+  async get(url: string, params?: any) {
     const token = store.getters.getToken();
     if (token) {
       this.headers.Authorization = 'Token ' + token;
     }
+    const config = Object.assign({}, {headers: this.headers}, {params}) as AxiosRequestConfig;
     const targetUrl = BASE_URL + url;
-    return axios.get(targetUrl, {headers: this.headers}).then(response => {
+    return axios.get(targetUrl, config).then(response => {
       return response.data;
     })
     .catch((error) => {

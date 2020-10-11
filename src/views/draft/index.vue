@@ -60,11 +60,7 @@ export default Vue.extend({
       this.items.push({id: ++this.lastId });
     },
     async onDraftAll() {
-      console.log(this.items);
-      console.log(this.cross);
-      
-      
-      // const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box: this.boxName});
+      const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box: this.boxName});
     },
     async onDraft() {
       this.items.forEach(element => {
