@@ -16,6 +16,11 @@
         <sphera-action-btn @click="onDraftAll()">Замутить санту</sphera-action-btn> 
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
+      </v-col>
+    </v-row>
     <v-card>
       <v-container>
         <template v-for="item in items">
@@ -53,6 +58,7 @@ export default Vue.extend({
       lastId: 4,
       http: new this.$http(),
       boxName: 'Коробочка',
+      boxDescription: '',
     };
   },
   methods: {
@@ -60,7 +66,7 @@ export default Vue.extend({
       this.items.push({id: ++this.lastId });
     },
     async onDraftAll() {
-      const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box: this.boxName});
+      const result = this.http.post('customer/postlist', {items: this.items.filter(item=>{ return item.name && item.name !== '';}), box:{ name: this.boxName, description: this.boxDescription}});
     },
     async onDraft() {
       this.items.forEach(element => {

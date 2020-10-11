@@ -31,7 +31,7 @@
                     </span>
                   
                     <span class="ma-0 body-1">
-                      {{ item.name }}
+                      {{ item.description }}
                     </span>
                   </v-row>
                 </v-card-title>
