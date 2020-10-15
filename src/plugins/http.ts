@@ -52,7 +52,7 @@ export class ApiSphera {
     }
 
     const targetUrl = BASE_URL + url;
-    return axios.put(targetUrl, item, {headers: this.headers}).then(response => {
+    return axios.put(targetUrl+ '/', item, {headers: this.headers}).then(response => {
       return response.data;
     });
   }

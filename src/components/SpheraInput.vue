@@ -13,6 +13,7 @@
     :suffix="suffix"
     :type="type"
     :readonly="readonly"
+    :disabled="disabled"
     hide-details="auto"
     @click:append="$emit('appendClick')"
     @click:prepend="$emit('prependClick')"
@@ -44,6 +45,7 @@ export default Vue.extend({
     suffix: { type: String, default: '' },
     type: { type: String, default: 'String' },
     readonly: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
   },
   data() {
     return {};
