@@ -27,7 +27,11 @@ const getters: GetterTree<SystemState, any> = {
 
   // аутентифицирован ли пользователь
   isAuth: (state: SystemState) => () => {
-    return !!(localStorage.getItem('token') || state.sessionToken);
+    // console.log(localStorage.getItem('token'));
+    // console.log(state.sessionToken);
+    // console.log('auth', !!localStorage.getItem('token') || !!state.sessionToken);
+    
+    return !!localStorage.getItem('token') || !!state.sessionToken;
   },
 
   getLogin: (state: SystemState) => () => {

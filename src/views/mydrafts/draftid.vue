@@ -140,7 +140,7 @@ export default Vue.extend({
       await this.http.post('draft/email', {id: this.draftid});
     },
     async onChangeBox() {
-      this.record = await this.http.put('draft/' + this.draftid, {limit: this.record.limit, limitValue:this.record.limitValue});
+      this.record = await this.http.put('draft/part_update/' + this.draftid, {limit: this.record.limit, limitValue:this.record.limitValue});
     },
     async onChangeWishes() {
       console.log(this.member.santa);

@@ -19,9 +19,6 @@ export class ApiSphera {
     const targetUrl = BASE_URL + url;
     return axios.get(targetUrl, config).then(response => {
       return response.data;
-    })
-    .catch((error) => {
-      console.log(Promise.reject(error));
     });
   }
   async getSystemState() {
@@ -70,13 +67,15 @@ export class ApiSphera {
 }
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response) {
+axios.interceptors.response.use((response: AxiosResponse)=> {
   // Do something with response data
-  console.log(response);
+  console.log(response.data);
   
   return response;
-}, function (error) {
+}, error => {
   const error_code = error.response.status;
+  console.log(123, error);
+  
   if (error_code) {
     switch (+error_code) {
       // ошибка аутентификации

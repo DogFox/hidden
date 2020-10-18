@@ -51,7 +51,7 @@ import { mydrafts } from './mydrafts';
 
 
 export default Vue.extend({
-  name: 'Clients',
+  name: 'Mydrafts',
   // components: { ClientModal },
   data() {
     return {
