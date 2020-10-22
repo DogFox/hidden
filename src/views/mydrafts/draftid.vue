@@ -1,42 +1,58 @@
 <template>
-  <v-container>
-    <v-card>
-      <v-card-title class="text-center justify-center">
-        <h1 class="font-weight-bold ">
-          {{ record.name }}
-        </h1>
-      </v-card-title>
-      <v-card-subtitle class="text-center justify-center py-2">
-        {{ record.description }}
-      </v-card-subtitle>
+  <v-card height="100%" class="opacity-color">
+    <v-container>
+      <v-row class="justify-center" no-gutters>
+        <v-col cols="6">
+          <v-card-title class="text-center justify-center">
+            <h1 class="font-weight-bold ">
+              {{ record.name }}
+            </h1>
+          </v-card-title>
+        </v-col>
+      </v-row>
+      <v-row class="justify-center" no-gutters>
+        <v-col cols="6">
+          <v-card-subtitle class="text-center justify-center py-2">
+            <h3>
+              {{ record.description }}
+            </h3>
+          </v-card-subtitle>
+        </v-col>
+      </v-row>
       <template v-if="admin">
         <v-tabs
-          v-model="tab" 
+          v-model="tab"
+          background-color="transparent" 
           centered
         >
           <v-tab>Основная</v-tab>
           <v-tab>Участники</v-tab>
+          <v-tab>Настройки</v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab">
           <v-tab-item>
-            <common-tab v-model="record" :draftid="draftid" :admin="admin" />
+            <common-tab v-model="record" :draftid="draftid" />
           </v-tab-item>
           <v-tab-item>
-            <members-tab v-model="record" :draftid="draftid" :admin="admin" @swop="fetchData()" />
+            <members-tab v-model="record" :draftid="draftid" @swop="fetchData()" />
+          </v-tab-item>
+          <v-tab-item>
+            <settings-tab v-model="record" :draftid="draftid" />
           </v-tab-item>
         </v-tabs-items>
       </template>
       <template v-else>
-        <common-tab v-model="record" :draftid="draftid" :admin="admin" />
+        <common-tab v-model="record" :draftid="draftid" />
       </template>
-    </v-card>
-  </v-container>
+    </v-container>
+  </v-card>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import CommonTab from './CommonTab.vue';
 import MembersTab from './MembersTab.vue';
+import SettingsTab from './SettingsTab.vue';
 
 interface SecretBox {
   id: number;
@@ -49,7 +65,7 @@ interface SecretBox {
 }
 
 export default Vue.extend({
-  components: { CommonTab, MembersTab },
+  components: { CommonTab, MembersTab, SettingsTab },
   props: {
     draftid: { type: [Number,String], default: null},
   },
@@ -88,3 +104,19 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+.opacity-color {
+  background-color: rgba(255, 255, 255, 0.2)
+}
+.v-tabs-items {
+  color: rgba(172, 28, 28, 0.8)
+}
+.theme--light.v-tabs-items {
+  background-color: rgba(255, 255, 255, 0.8)
+}
+
+/* .container {
+  max-width: 1000px;
+} */
+</style>
