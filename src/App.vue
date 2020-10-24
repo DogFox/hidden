@@ -8,7 +8,7 @@
     <AppToolbar v-if="isAuth" />
     <!-- Основной контент -->
     <v-main class="bg">
-      <router-view />
+      <router-view v-if="isAuth" />
     </v-main>
   </v-app>
 </template>
