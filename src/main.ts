@@ -36,9 +36,13 @@ import Vuetify, {
   VTooltip,
   VOverlay,
   VScrollXTransition,
+  VSnackbar,
   // @ts-ignore
 } from 'vuetify/lib';
-
+import VuetifyToast from 'vuetify-toast-snackbar';
+import ru from 'vuetify/src/locale/ru';
+import '@mdi/font/css/materialdesignicons.css'; // Ensure you are using css-loader
+import 'material-design-icons-iconfont/dist/material-design-icons.css'; // Ensure you are using css-loader
 
 const theme = {
   themes: {
@@ -54,8 +58,18 @@ const theme = {
   },
 };
 
-const objs = { vuetify: new Vuetify({theme}) };
+const opts: any = {
+  lang: { locales: { ru }, current: 'ru' },
+  icons: {
+    iconfont: 'mdi',
+    values: {},
+  },
+  theme,
+};
+const vueObj = new Vuetify(opts);
+const objs = { vuetify: vueObj };
 Vue.use(Vuetify, {
+  // iconfont: 'mdi',
   components: {
     VBtn,
     VList,
@@ -87,9 +101,11 @@ Vue.use(Vuetify, {
     VTooltip,
     VOverlay,
     VScrollXTransition,
+    VSnackbar,
   },
 });
 
+Vue.use(VuetifyToast,{ $vuetify: vueObj.framework, color: 'primary' });
 Vue.config.productionTip = false;
 Vue.prototype.$http = ApiSphera;
 

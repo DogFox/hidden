@@ -74,18 +74,29 @@ axios.interceptors.response.use((response: AxiosResponse)=> {
   return response;
 }, error => {
   const error_code = error.response.status;
-  console.log(123, error);
+  const error_data = error.response.data;
+  console.log('http_err', error_code);
+  console.log('http_err', error.response);
   
   if (error_code) {
     switch (+error_code) {
       // ошибка аутентификации
       case 401:
         store.commit('SET_TOKEN', ''); // окно аутентификации
+        Vue.prototype.$toast(error_data.detail, { color: 'error' });
         break;
+      case 400: {
+        let mess = '';
+        for( const attr in error_data ) {
+          mess += error_data[attr] + ' ';
+        }
+        Vue.prototype.$toast(mess, { color: 'error' });
+        break;
+      }
       default:
-        console.log('response error:', error.response.data, error_code);
+        console.log('response error:', error_data, error_code);
+        Vue.prototype.$toast(error_data.detail, { color: 'error' });
         // store.commit('WRITE_DEBUG_LOG', { type: 'http.interceptor.taskerror', info: JSON.stringify(err) });
-        // Vue.prototype.$toast(error.response.data.detail, { color: 'error' });
     }
   }
   // Do something with response error

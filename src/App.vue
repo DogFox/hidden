@@ -1,14 +1,13 @@
 <template>
   <v-app>
     <!-- Авторизация -->
-    <!-- <LoginDialog /> -->
+    <LoginDialog v-if="!isAuth" />
     <!-- Боковая менюшка -->
     <BottomNavigation v-if="isAuth" />
     <!-- Тулбар сверху -->
     <AppToolbar v-if="isAuth" />
     <!-- Основной контент -->
     <v-main class="bg">
-      <LoginPage v-if="!isAuth" />
       <router-view />
     </v-main>
   </v-app>
@@ -26,6 +25,8 @@ export default Vue.extend({
   },
   computed: {
     isAuth(): boolean {
+      console.log('isAuth', this.$store.getters.isAuth());
+      
       return this.$store.getters.isAuth();
     },
   },

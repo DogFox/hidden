@@ -95,6 +95,7 @@ export default Vue.extend({
   },
   methods: {
     async fetchData() {
+      this.$toast('Раз раз раз');
       const result = await this.http.get('draftpermission/' + this.draftid);
       if( result && result.admin ) {
         this.admin = result.admin;

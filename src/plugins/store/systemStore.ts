@@ -69,8 +69,8 @@ const actions: ActionTree<SystemState, any> = {
   // Метод авторизации пользователя
   async SIGN_IN({ commit, dispatch }, payload: StackAuthData) {
     const token = payload?.token;
+    commit('SET_LOGIN', payload?.login);
     // if (!token && payload.login) {
-    //   commit('SET_LOGIN', payload.login);
     //   const http = new StackApi();
     //   token = await http.getToken(payload.login, payload?.password || '', !!payload.force);
     // }
