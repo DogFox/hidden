@@ -5,7 +5,6 @@
     :color="props.color ? props.color : props.toolbar !== undefined ? 'secondary' : 'primary'"
     :outlined="props.toolbar !== undefined ? true : props.outlined"
     :small="props.toolbar !== undefined ? true : props.small"
-    :text="props.text"
     v-bind="data.attrs"
     v-on="listeners"
   >

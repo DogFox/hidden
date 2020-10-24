@@ -50,9 +50,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import CommonTab from './CommonTab.vue';
-import MembersTab from './MembersTab.vue';
-import SettingsTab from './SettingsTab.vue';
+import CommonTab from './tabs/CommonTab.vue';
+import MembersTab from './tabs/MembersTab.vue';
+import SettingsTab from './tabs/SettingsTab.vue';
 
 interface SecretBox {
   id: number;

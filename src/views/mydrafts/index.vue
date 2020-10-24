@@ -80,8 +80,4 @@ export default Vue.extend({
 .v-card:not(.on-hover) {
   opacity: 0.6;
  }
-
-.show-btns {
-  color: rgba(255, 255, 255, 1) !important;
-}
 </style>
