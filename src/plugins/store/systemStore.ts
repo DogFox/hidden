@@ -22,7 +22,7 @@ const state: SystemState = {
 const getters: GetterTree<SystemState, any> = {
   // текущий токен
   getToken: (state: SystemState) => () => {
-    return localStorage.getItem('token') || state.sessionToken;
+    return state.sessionToken;
   },
 
   // аутентифицирован ли пользователь
@@ -30,8 +30,9 @@ const getters: GetterTree<SystemState, any> = {
     // console.log(localStorage.getItem('token'));
     // console.log(state.sessionToken);
     // console.log('auth', !!localStorage.getItem('token') || !!state.sessionToken);
+    console.log(localStorage);
     
-    return !!localStorage.getItem('token') || !!state.sessionToken;
+    return  !!state.sessionToken;
   },
 
   getLogin: (state: SystemState) => () => {
@@ -46,7 +47,6 @@ const getters: GetterTree<SystemState, any> = {
 const mutations: MutationTree<SystemState> = {
   // устанавливаем токен
   SET_TOKEN(state, sessionToken: string) {
-    localStorage.setItem('token', sessionToken);
     state.sessionToken = sessionToken;
   },
   // Login текущего пользователя

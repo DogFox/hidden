@@ -102,6 +102,7 @@ export default Vue.extend({
       }
       this.record = await this.http.get('draft/' + this.draftid, result);
     },
+    
   },
 });
 </script>

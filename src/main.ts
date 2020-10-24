@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './plugins/router';
 import { store } from './plugins/store/index';
+import { StateStorage } from './plugins/storage/index';
 import { ApiSphera } from './plugins/http';
 import './prepareComponents';
 
@@ -40,6 +41,7 @@ import Vuetify, {
   // @ts-ignore
 } from 'vuetify/lib';
 import VuetifyToast from 'vuetify-toast-snackbar';
+import lsWatcher from 'vue-storage-watcher';
 import ru from 'vuetify/src/locale/ru';
 import '@mdi/font/css/materialdesignicons.css'; // Ensure you are using css-loader
 import 'material-design-icons-iconfont/dist/material-design-icons.css'; // Ensure you are using css-loader
@@ -105,9 +107,16 @@ Vue.use(Vuetify, {
   },
 });
 
-Vue.use(VuetifyToast,{ $vuetify: vueObj.framework, color: 'primary' });
+Vue.use(VuetifyToast,{ $vuetify: vueObj.framework, color: 'primary' }); // тосты 
+//реактивное хранилище
+// Vue.use(lsWatcher); нельзя использовать внутри вьюкса
 Vue.config.productionTip = false;
 Vue.prototype.$http = ApiSphera;
+
+// локальный смотрит во вьюкс
+store.subscribe(StateStorage.subscriber);
+// Загружаем информацию из local storage
+StateStorage.loadState('common');
 
 new Vue({
   router,
