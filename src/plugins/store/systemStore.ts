@@ -30,8 +30,6 @@ const getters: GetterTree<SystemState, any> = {
     // console.log(localStorage.getItem('token'));
     // console.log(state.sessionToken);
     // console.log('auth', !!localStorage.getItem('token') || !!state.sessionToken);
-    console.log(localStorage);
-    
     return  !!state.sessionToken;
   },
 

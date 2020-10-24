@@ -2,7 +2,7 @@
   <v-container>
     <v-row justify="center">
       <v-col cols="8">
-        <v-card-title class="justify-center">
+        <v-card-title class="justify-center christmass-color">
           Поздравляю! Вы - тайный санта. Ваша жертва: {{ member.member_name }}
         </v-card-title>
       </v-col>
@@ -20,8 +20,8 @@
             
     <v-row v-if="record.limit" justify="center">
       <v-col cols="8">
-        <span class="font-weight-bold">Внимание! Организатор установил ограничение по общей стоимости подарка в {{ record.limitValue }} рублей!</span>
-        <span class="font-weight-bold">Пожалуйста, постарайтесь придерживаться плана!</span>
+        <span class="font-weight-bold christmass-color">Внимание! Организатор установил ограничение по общей стоимости подарка в {{ record.limitValue }} рублей!</span>
+        <span class="font-weight-bold christmass-color">Пожалуйста, постарайтесь придерживаться плана!</span>
       </v-col>
     </v-row>
   </v-container>
@@ -59,3 +59,8 @@ export default Vue.extend({
   },
 });
 </script>
+
+
+<style scoped>
+
+</style>

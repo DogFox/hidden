@@ -25,8 +25,6 @@ export default Vue.extend({
   },
   computed: {
     isAuth(): boolean {
-      console.log('isAuth', this.$store.getters.isAuth());
-      
       return this.$store.getters.isAuth();
     },
   },
@@ -40,10 +38,6 @@ export default Vue.extend({
   },
   methods: {
     async checkIsAuth() {
-      console.log('isAuth check', this.$store.getters.isAuth());
-      console.log('isAuth check', this.isAuth);
-      console.log('isAuth check',this.$store.getters.getToken());
-      
       if (this.isAuth) {
         return true;
       }

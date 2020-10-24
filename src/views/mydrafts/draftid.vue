@@ -3,7 +3,7 @@
     <v-container>
       <v-row class="justify-center" no-gutters>
         <v-col cols="6">
-          <v-card-title class="text-center justify-center">
+          <v-card-title class="text-center justify-center christmass-color">
             <h1 class="font-weight-bold ">
               {{ record.name }}
             </h1>
@@ -12,8 +12,8 @@
       </v-row>
       <v-row class="justify-center" no-gutters>
         <v-col cols="6">
-          <v-card-subtitle class="text-center justify-center py-2">
-            <h3>
+          <v-card-subtitle class="text-center justify-center py-2 ">
+            <h3 class="christmass-color">
               {{ record.description }}
             </h3>
           </v-card-subtitle>
@@ -95,7 +95,6 @@ export default Vue.extend({
   },
   methods: {
     async fetchData() {
-      this.$toast('Раз раз раз');
       const result = await this.http.get('draftpermission/' + this.draftid);
       if( result && result.admin ) {
         this.admin = result.admin;
@@ -110,9 +109,6 @@ export default Vue.extend({
 <style scoped>
 .opacity-color {
   background-color: rgba(255, 255, 255, 0.2)
-}
-.v-tabs-items {
-  color: rgba(172, 28, 28, 0.8)
 }
 .theme--light.v-tabs-items {
   background-color: rgba(255, 255, 255, 0.8)
