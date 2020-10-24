@@ -3,11 +3,11 @@
     <sphera-action-btn class="no-border" simple-icon="mdi-arrow-left" outlined color="white" @click="$router.go(-1)">
       Туда
     </sphera-action-btn>
-    <v-toolbar-title>
+    <!-- <v-toolbar-title>
       <h4>
         Тайный санта бывших друзей
       </h4>
-    </v-toolbar-title>
+    </v-toolbar-title> -->
     <v-spacer />
 
     <v-chip

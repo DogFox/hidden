@@ -1,10 +1,24 @@
 <template>
-  <v-navigation-drawer v-model="drawer" :color="color" expand-on-hover :mini-variant="miniVariant" app dark>
+  <v-navigation-drawer
+    v-model="drawer"
+    :color="color"
+    expand-on-hover
+    :mini-variant="miniVariant"
+    app
+    dark
+    @mouseover.native="hover=true"
+    @mouseleave.native="hover=false"
+  >
     <v-list dense nav class="py-0">
-      <v-list-item two-line :class="miniVariant && 'px-0'">
-        <v-list-item-avatar>
-          <img src="https://randomuser.me/api/portraits/men/81.jpg">
-        </v-list-item-avatar>
+      <v-list-item two-line style="min-height:100px">
+        <!-- <v-list-item-avatar size="40">
+          <img src="../assets/santa.jpg">
+        </v-list-item-avatar> -->
+        <v-col>
+          <h2 :class="hover ? 'show' : 'transparent'">
+            Тайный санта
+          </h2>
+        </v-col>
       </v-list-item>
 
       <v-divider />
@@ -19,6 +33,15 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+    <template v-slot:append>
+      <v-container>
+        <v-row no-gutters>
+          <v-col>
+            <v-icon large @click="toAuthor()">mdi-vk</v-icon>
+          </v-col>
+        </v-row>
+      </v-container>
+    </template>
   </v-navigation-drawer>
 </template>
 
@@ -27,12 +50,12 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'HelloWorld',
-  props: {
-    miniVariant: { type: Boolean, default: true },
-  },
   data() {
     return {
+      showTitle: false,
       drawer: true,
+      hover: false,
+      miniVariant: true,
       items: [
         { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
         { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts' },
@@ -40,10 +63,33 @@ export default Vue.extend({
         // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
         // { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },
         // { title: 'Поставщики', icon: 'mdi-help-box', path: '/suppliers' },
-        { title: 'Тестирование компонентов', icon: 'mdi-image', path: '/test' },
+        // { title: 'Тестирование компонентов', icon: 'mdi-image', path: '/test' },
       ],
       color: 'primary',
     };
   },
+  methods: {
+    onChange( payload: any) {
+      console.log(payload);
+      if( payload === false) {
+        this.showTitle = true;   
+      }
+    },
+    toAuthor() {
+      window.open('https://vk.com/id13606999');
+    },
+  },
 });
 </script>
+
+<style scoped>
+
+.transparent {
+  opacity: 0;
+  transition: opacity .4s ease-in-out;
+}
+.show {
+  opacity: 1;
+  transition: opacity .4s ease-in-out;
+}
+</style>
