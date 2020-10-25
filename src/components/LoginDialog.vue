@@ -44,13 +44,29 @@ export default Vue.extend({
     return {
       dial: true,
       record: {
+        // email: '',
+        // username: '',
+        // password: '',
         email: 'kurovda@gmail.com',
         username: 'DogFox',
         password: '8GjblNpd',
       },
     };
   },
+  created() {
+    this.checkRouteToken();
+  },
   methods: {
+    async checkRouteToken() {
+      if (this.$route && this.$route.query ) {
+        const queryParams = this.$route.query;
+        if(queryParams.token) {
+          this.$router.replace({ query: {} });
+          const isAuth = this.$store.dispatch('SIGN_IN', { token: queryParams.token });
+          this.dial = false;
+        }
+      }
+    },
     async onEnter() {
       const result = await new this.$http().post('users/login', this.record);
       if (result && result.token) {

@@ -95,7 +95,7 @@ axios.interceptors.response.use((response: AxiosResponse)=> {
       }
       default:
         console.log('response error:', error_data, error_code);
-        Vue.prototype.$toast(error_data.detail, { color: 'error' });
+        Vue.prototype.$toast(error_data.error, { color: 'error' });
         // store.commit('WRITE_DEBUG_LOG', { type: 'http.interceptor.taskerror', info: JSON.stringify(err) });
     }
   }

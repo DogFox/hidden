@@ -1,8 +1,6 @@
 <template>
   <v-app-bar app dark color="primary" flat>
-    <sphera-action-btn class="no-border" simple-icon="mdi-arrow-left" outlined color="white" @click="$router.go(-1)">
-      Туда
-    </sphera-action-btn>
+    <sphera-action-btn class="no-border" simple-icon="mdi-arrow-left" outlined color="white" @click="$router.go(-1)" />
     <!-- <v-toolbar-title>
       <h4>
         Тайный санта бывших друзей

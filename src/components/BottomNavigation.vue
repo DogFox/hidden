@@ -86,10 +86,9 @@ export default Vue.extend({
 
 .transparent {
   opacity: 0;
-  transition: opacity .4s ease-in-out;
 }
 .show {
   opacity: 1;
-  transition: opacity .4s ease-in-out;
+  transition: opacity .6s ease-in-out;
 }
 </style>
