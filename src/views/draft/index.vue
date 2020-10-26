@@ -4,7 +4,7 @@
       align="center"
       justify="center"
     >
-      <v-col cols="4">
+      <v-col cols="5">
         <v-row no-gutters>
           <sphera-input v-model="boxName" label="Название группы" />
           <sphera-action-btn outlined @click="onDraftAll()">Замутить санту</sphera-action-btn> 
@@ -23,7 +23,7 @@
       align="center"
       justify="center"
     >
-      <v-col cols="4">
+      <v-col cols="5">
         <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
       </v-col>
     </v-row>

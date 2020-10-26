@@ -2,8 +2,11 @@
   <v-card>
     <v-container>
       <v-row class="justify-center">
-        <v-col cols="6">
+        <v-col cols="3">
           <sphera-input v-model="record.email" label="Email" disabled />
+        </v-col>
+        <v-col cols="3">
+          <sphera-input v-model="record.username" label="Login" />
         </v-col>
       </v-row>
       <v-row class="justify-center">

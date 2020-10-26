@@ -88,6 +88,7 @@
       <v-spacer />
       
       <!-- <sphera-action-btn v-if="tab==='/draft'" color="white" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>  -->
+      <v-icon large @click="toAuthor()">mdi-vk</v-icon>
     </template>
   </v-app-bar>
 </template>
@@ -123,9 +124,8 @@ export default Vue.extend({
     onLogout() {
       this.$store.dispatch('SIGN_OUT');
     },
-    onDraftAll() {
-      console.log(this.tab);
-      
+    toAuthor() {
+      window.open('https://vk.com/id13606999');
     },
   },
 });
