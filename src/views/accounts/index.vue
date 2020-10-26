@@ -8,10 +8,10 @@
       </v-row>
       <v-row class="justify-center">
         <v-col cols="3">
-          <sphera-input v-model="record.old_pass" label="Старый пароль" />
+          <sphera-input v-model="old_pass" label="Старый пароль" />
         </v-col>
         <v-col cols="3">
-          <sphera-input v-model="record.new_pass" label="Новый пароль" @change="passChange = true" />
+          <sphera-input v-model="new_pass" label="Новый пароль" @change="passChange = true" />
         </v-col>
       </v-row>
       <v-row class="justify-center">
@@ -36,8 +36,6 @@ interface User {
   id: number;
   first_name: string;
   last_name: string;
-  old_pass: string;
-  new_pass: string;
 }
 
 export default Vue.extend({
@@ -47,6 +45,8 @@ export default Vue.extend({
       record: {} as User,
       changed: false,
       passChange: false,
+      old_pass: '',
+      new_pass: '',
     };
   },
   async created() {
@@ -58,7 +58,7 @@ export default Vue.extend({
       this.record = await new this.$http().put('users/part_update/' + this.record.id, {first_name: this.record.first_name, last_name:this.record.last_name});
       if( this.passChange )
       {
-        await new this.$http().post('users/change_password', {old_password: this.record.old_pass, new_password: this.record.new_pass});
+        await new this.$http().post('users/change_password', {old_password: this.old_pass, new_password: this.new_pass});
       }
     },
   },

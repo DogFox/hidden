@@ -44,12 +44,9 @@ export default Vue.extend({
     return {
       dial: true,
       record: {
-        // email: '',
-        // username: '',
-        // password: '',
-        email: 'kurovda@gmail.com',
-        username: 'DogFox',
-        password: '8GjblNpd',
+        email: '',
+        username: '',
+        password: '',
       },
     };
   },

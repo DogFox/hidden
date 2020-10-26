@@ -5,6 +5,7 @@
     expand-on-hover
     :mini-variant="miniVariant"
     app
+    clipped
     dark
     @mouseover.native="hover=true"
     @mouseleave.native="hover=false"
