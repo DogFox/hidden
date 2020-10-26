@@ -1,8 +1,14 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col cols="3">
-        <sphera-input v-model="boxName" label="Название группы" />
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col cols="4">
+        <v-row no-gutters>
+          <sphera-input v-model="boxName" label="Название группы" />
+          <sphera-action-btn outlined @click="onDraftAll()">Замутить санту</sphera-action-btn> 
+        </v-row>
       </v-col>
       
       <!-- <sphera-action-btn @click="addItem()">Добавить участника</sphera-action-btn>   -->
@@ -12,14 +18,19 @@
         </v-btn>  -->
 
       <!-- <v-btn @click="onDraft()">Вставить в базу участников</v-btn>  -->
-      <sphera-action-btn outlined @click="onDraftAll()">Замутить санту</sphera-action-btn> 
     </v-row>
-    <v-row>
-      <v-col>
+    <v-row 
+      align="center"
+      justify="center"
+    >
+      <v-col cols="4">
         <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
       </v-col>
     </v-row>
-    <v-row> 
+    <v-row 
+      align="center"
+      justify="center"
+    > 
       <template v-for="item in items">
         <v-col :key="item.id" cols="4">
           <v-card>
@@ -54,7 +65,7 @@ export default Vue.extend({
         {id: 0, name: '', email: '', cross: null},
       ] as any[],
       cross: null,
-      lastId: 7,
+      lastId: 0,
       http: new this.$http(),
       boxName: 'Коробочка',
       boxDescription: '',
