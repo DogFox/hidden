@@ -1,0 +1,132 @@
+<template>
+  <v-app-bar
+    app
+    color="#6A76AB"
+    dark
+    prominent
+    dense 
+    src="https://fullhdoboi.ru/wp-content/uploads/_ph/6/645556238.jpg"
+    fade-img-on-scroll
+    scroll-target="#scrolling-techniques-4"
+  >
+    <template v-slot:img="{ props }">
+      <v-img
+        v-bind="props"
+        gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+      />
+    </template>
+
+
+    <v-toolbar-title>Тайный санта</v-toolbar-title>
+
+    <v-spacer />
+    
+    <v-chip
+      class="ma-2"
+      label
+      outlined
+      to="/accounts"
+    >
+      <v-icon left>
+        mdi-account-circle-outline
+      </v-icon>
+      {{ login }}
+    </v-chip>
+
+    
+    <v-btn icon>
+      <v-icon 
+        @click="onLogout()"
+      >
+        mdi-logout
+      </v-icon>
+    </v-btn>
+    <!-- 
+    <v-chip
+      v-if="isAuth"
+      class="ma-2"
+      color="primary"
+      label
+      @click="onLogout()"
+    >
+      <v-icon left>
+        mdi-logout
+      </v-icon>
+    </v-chip> -->
+
+    <!-- <v-menu
+      bottom
+      left
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          icon
+          color="yellow"
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu> -->
+
+    <template v-slot:extension>
+      <v-tabs v-model="tab" align-with-title>
+        <template v-for="(item, index) in items">
+          <v-tab :key="index" :to="item.path">{{ item.title }}</v-tab>
+        </template>
+      </v-tabs>
+      <v-spacer />
+      
+      <!-- <sphera-action-btn v-if="tab==='/draft'" color="white" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>  -->
+    </template>
+  </v-app-bar>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: 'AppToolbar',
+  computed: {
+    login(): boolean {
+      return this.$store.getters.getLogin();
+    },
+    isAuth(): boolean {
+      return this.$store.getters.isAuth();
+    },
+  },
+  data() {
+    return {
+      tab: null,
+      items: [
+        { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
+        { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts' },
+        // { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
+        // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
+        // { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },
+        // { title: 'Поставщики', icon: 'mdi-help-box', path: '/suppliers' },
+        // { title: 'Тестирование компонентов', icon: 'mdi-image', path: '/test' },
+      ],
+    };
+  },
+  methods: {
+    onLogout() {
+      this.$store.dispatch('SIGN_OUT');
+    },
+    onDraftAll() {
+      console.log(this.tab);
+      
+    },
+  },
+});
+</script>

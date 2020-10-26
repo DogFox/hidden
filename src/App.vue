@@ -2,10 +2,11 @@
   <v-app>
     <!-- Авторизация -->
     <LoginDialog v-if="!isAuth" />
-    <!-- Тулбар сверху -->
-    <BottomNavigation v-if="isAuth" />
-    <AppToolbar v-if="isAuth" />
     <!-- Боковая менюшка -->
+    <!-- <BottomNavigation v-if="isAuth" /> -->
+    <!-- Тулбар сверху -->
+    <!-- <AppToolbar v-if="isAuth" /> -->
+    <AppToolbarNew v-if="isAuth" />
     <!-- Основной контент -->
     <v-main class="bg">
       <router-view v-if="isAuth" />
@@ -50,10 +51,18 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+/* .back {
+  background-image:  url('./assets/background.jpeg') ;
+  background-size:auto;
+}
+#inspire {
+  background: none;
+} */
 
 .bg {
     height: 100vh;
     background: url('./assets/background.jpeg') no-repeat center center;
     background-size: cover;
+    background-attachment: fixed;
   }
 </style>
