@@ -1,15 +1,15 @@
 <template>
   <v-app>
     <!-- Авторизация -->
-    <LoginDialog v-if="!isAuth" />
+    <!-- <LoginDialog /> -->
     <!-- Боковая менюшка -->
     <!-- <BottomNavigation v-if="isAuth" /> -->
     <!-- Тулбар сверху -->
     <!-- <AppToolbar v-if="isAuth" /> -->
-    <AppToolbarNew v-if="isAuth" />
+    <AppToolbarNew />
     <!-- Основной контент -->
     <v-main class="bg">
-      <router-view v-if="isAuth" />
+      <router-view />
     </v-main>
   </v-app>
 </template>

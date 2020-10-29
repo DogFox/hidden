@@ -7,7 +7,6 @@
     dense 
     src="https://fullhdoboi.ru/wp-content/uploads/_ph/6/645556238.jpg"
     fade-img-on-scroll
-    scroll-target="#scrolling-techniques-4"
   >
     <template v-slot:img="{ props }">
       <v-img
@@ -20,69 +19,45 @@
     <v-toolbar-title>Тайный санта</v-toolbar-title>
 
     <v-spacer />
-    
-    <v-chip
-      class="ma-2"
-      label
-      outlined
-      to="/accounts"
-    >
-      <v-icon left>
-        mdi-account-circle-outline
-      </v-icon>
-      {{ login }}
-    </v-chip>
-
-    
-    <v-btn icon>
-      <v-icon 
-        @click="onLogout()"
+    <!-- {{ isAuth }} -->
+    <template v-if="isAuth">
+      <v-chip
+        class="ma-2"
+        label
+        outlined
+        to="/accounts"
       >
-        mdi-logout
-      </v-icon>
-    </v-btn>
-    <!-- 
-    <v-chip
-      v-if="isAuth"
-      class="ma-2"
-      color="primary"
-      label
-      @click="onLogout()"
-    >
-      <v-icon left>
-        mdi-logout
-      </v-icon>
-    </v-chip> -->
+        <v-icon left>
+          mdi-account-circle-outline
+        </v-icon>
+        {{ login }}
+      </v-chip>
 
-    <!-- <v-menu
-      bottom
-      left
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          icon
-          color="yellow"
-          v-bind="attrs"
-          v-on="on"
+    
+      <v-btn icon>
+        <v-icon 
+          @click="onLogout()"
         >
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-      </template>
+          mdi-logout
+        </v-icon>
+      </v-btn> 
+    </template>
+    <template v-else>
+      <v-chip
+        class="ma-2"
+        label
+        outlined
+        to="/authentication"
+      >
+        Войти
+      </v-chip>
+    </template>
 
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu> -->
 
     <template v-slot:extension>
       <v-tabs v-model="tab" align-with-title>
         <template v-for="(item, index) in items">
-          <v-tab :key="index" :to="item.path">{{ item.title }}</v-tab>
+          <v-tab v-if="item.isAuth ? isAuth: true" :key="index" :to="item.path">{{ item.title }}</v-tab>
         </template>
       </v-tabs>
       <v-spacer />
@@ -111,7 +86,7 @@ export default Vue.extend({
       tab: null,
       items: [
         { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
-        { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts' },
+        { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts', isAuth: true },
         // { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
         // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
         // { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },

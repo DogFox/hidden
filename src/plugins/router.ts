@@ -6,6 +6,7 @@ import Account from '../views/accounts/index.vue';
 import Draft from '../views/draft/index.vue';
 import MyDrafts from '../views/mydrafts/index.vue';
 import draftid from '../views/mydrafts/draftid.vue';
+import Authentication from '../views/authentication/index.vue';
 import Test from '../views/test/index.vue';
 
 Vue.use(VueRouter);
@@ -42,10 +43,16 @@ const routes = [
     component: Account,
   },
   {
+    path: '/authentication',
+    name: 'authentication',
+    component: Authentication,
+  },
+  {
     path: '/test',
     name: 'test',
     component: Test,
   },
+  
   // {
   //   path: '/about',
   //   name: 'About',
