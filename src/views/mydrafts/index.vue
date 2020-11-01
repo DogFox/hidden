@@ -8,7 +8,9 @@
       <template v-for="(item, i) in items">
         <v-col
           :key="i"
-          cols="6"
+          sm="12"
+          md="8"
+          lg="6" 
         >
           <v-hover v-slot:default="{ hover }">
             <v-card

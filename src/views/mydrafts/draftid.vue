@@ -2,7 +2,11 @@
   <v-card height="100%" class="opacity-color">
     <v-container>
       <v-row class="justify-center" no-gutters>
-        <v-col cols="6">
+        <v-col 
+          sm="12"
+          md="8"
+          lg="6"
+        >
           <v-card-title class="text-center justify-center christmass-color">
             <h1 class="font-weight-bold ">
               {{ record.name }}
@@ -11,7 +15,11 @@
         </v-col>
       </v-row>
       <v-row class="justify-center" no-gutters>
-        <v-col cols="6">
+        <v-col 
+          sm="12"
+          md="8"
+          lg="6"
+        >
           <v-card-subtitle class="text-center justify-center py-2 ">
             <h3 class="christmass-color">
               {{ record.description }}

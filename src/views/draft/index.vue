@@ -4,7 +4,7 @@
       align="center"
       justify="center"
     >
-      <v-col cols="5">
+      <v-col sm="12" lg="5" md="8">
         <v-row no-gutters>
           <sphera-input v-model="boxName" label="Название группы" />
           
@@ -24,7 +24,7 @@
       align="center"
       justify="center"
     >
-      <v-col cols="5">
+      <v-col sm="12" lg="5" md="8">
         <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
       </v-col>
     </v-row>
@@ -33,7 +33,7 @@
       justify="center"
     > 
       <template v-for="item in items">
-        <v-col :key="item.id" cols="4">
+        <v-col :key="item.id" sm="12" md="6" lg="4">
           <v-card>
             <v-container>
               <v-row>

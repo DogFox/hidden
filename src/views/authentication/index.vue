@@ -5,7 +5,7 @@
       align="center"
       justify="center"
     >
-      <v-col cols="5">
+      <v-col sm="12" md="6" lg="5">
         <v-row>
           <v-col>
             <sphera-input v-model="record.username" label="Логин" /> 

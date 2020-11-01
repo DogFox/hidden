@@ -2,26 +2,26 @@
   <v-card>
     <v-container>
       <v-row class="justify-center">
-        <v-col cols="3">
+        <v-col sm="12" md="6" lg="4">
           <sphera-input v-model="record.email" label="Email" disabled />
         </v-col>
-        <v-col cols="3">
+        <v-col sm="12" md="6" lg="4">
           <sphera-input v-model="record.username" label="Login" />
         </v-col>
       </v-row>
       <v-row class="justify-center">
-        <v-col cols="3">
+        <v-col sm="12" md="6" lg="4">
           <sphera-input v-model="old_pass" label="Старый пароль" />
         </v-col>
-        <v-col cols="3">
+        <v-col sm="12" md="6" lg="4">
           <sphera-input v-model="new_pass" label="Новый пароль" @change="passChange = true" />
         </v-col>
       </v-row>
       <v-row class="justify-center">
-        <v-col cols="3">
+        <v-col sm="12" md="6" lg="4">
           <sphera-input v-model="record.first_name" label="Имя" />
         </v-col>
-        <v-col cols="3">
+        <v-col sm="12" md="6" lg="4">
           <sphera-input v-model="record.last_name" label="Фамилия" />
         </v-col>
       </v-row>
