@@ -52,7 +52,7 @@ const routes = [
     name: 'test',
     component: Test,
   },
-  
+
   // {
   //   path: '/about',
   //   name: 'About',

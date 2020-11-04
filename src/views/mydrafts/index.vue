@@ -1,37 +1,17 @@
 <template>
   <v-container class="pa-4 text-center">
-    <v-row
-      class="fill-height"
-      align="center"
-      justify="center"
-    >
+    <v-row class="fill-height" align="center" justify="center">
       <template v-for="(item, i) in items">
-        <v-col
-          :key="i"
-          sm="12"
-          md="8"
-          lg="6" 
-        >
+        <v-col :key="i" sm="12" md="8" lg="6">
           <v-hover v-slot:default="{ hover }">
-            <v-card
-              :elevation="hover ? 12 : 2"
-              :class="{ 'on-hover': hover }"
-              @click="onClickBox(item)"
-            >
-              <v-img
-                class="white--text align-end"
-                height="150px"
-                :src="box_background"
-              >
+            <v-card :elevation="hover ? 12 : 2" :class="{ 'on-hover': hover }" @click="onClickBox(item)">
+              <v-img class="white--text align-end" height="150px" :src="box_background">
                 <v-card-title class="title">
-                  <v-row
-                    class="fill-height flex-column"
-                    justify="space-between"
-                  >
+                  <v-row class="fill-height flex-column" justify="space-between">
                     <span class="mt-4 subheading">
                       {{ item.name }}
                     </span>
-                  
+
                     <span class="ma-0 body-1">
                       {{ item.description }}
                     </span>
@@ -51,7 +31,6 @@ import Vue from 'vue';
 // import ClientModal from './ClientModal.vue';
 import { mydrafts } from './mydrafts';
 
-
 export default Vue.extend({
   name: 'Mydrafts',
   // components: { ClientModal },
@@ -67,7 +46,7 @@ export default Vue.extend({
     this.items = await new this.$http().get(this.path);
   },
   methods: {
-    onClickBox(payload: any){
+    onClickBox(payload: any) {
       this.$router.push({ name: 'draftid', params: { draftid: payload.id } });
     },
   },
@@ -76,10 +55,10 @@ export default Vue.extend({
 
 <style scoped>
 .v-card {
-  transition: opacity .4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .v-card:not(.on-hover) {
   opacity: 0.6;
- }
+}
 </style>

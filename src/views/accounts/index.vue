@@ -26,7 +26,7 @@
         </v-col>
       </v-row>
       <v-row v-if="changed" class="justify-center">
-        <sphera-action-btn @click="onChangeUser()">Сохранить изменения</sphera-action-btn> 
+        <sphera-action-btn @click="onChangeUser()">Сохранить изменения</sphera-action-btn>
       </v-row>
     </v-container>
   </v-card>
@@ -58,18 +58,17 @@ export default Vue.extend({
   },
   methods: {
     async onChangeUser() {
-      this.record = await new this.$http().put('users/part_update/' + this.record.id, {first_name: this.record.first_name, last_name:this.record.last_name});
-      if( this.passChange )
-      {
-        await new this.$http().post('users/change_password', {old_password: this.old_pass, new_password: this.new_pass});
+      this.record = await new this.$http().put('users/part_update/' + this.record.id, { first_name: this.record.first_name, last_name: this.record.last_name });
+      if (this.passChange) {
+        await new this.$http().post('users/change_password', { old_password: this.old_pass, new_password: this.new_pass });
       }
     },
   },
-  watch:{ 
+  watch: {
     record: {
       deep: true,
-      handler( to, from) {
-        if( from && from.id ) {
+      handler(to, from) {
+        if (from && from.id) {
           this.changed = true;
         }
       },

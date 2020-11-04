@@ -46,7 +46,7 @@ import ru from 'vuetify/src/locale/ru';
 import '@mdi/font/css/materialdesignicons.css'; // Ensure you are using css-loader
 import 'material-design-icons-iconfont/dist/material-design-icons.css'; // Ensure you are using css-loader
 import 'roboto-fontface/css/roboto/roboto-fontface.css'; // шрифт Material Design
-import "./assets/custom.scss"; // Кастомные стили
+import './assets/custom.scss'; // Кастомные стили
 
 const theme = {
   themes: {
@@ -109,8 +109,8 @@ Vue.use(Vuetify, {
   },
 });
 
-Vue.use(VuetifyToast,{ $vuetify: vueObj.framework, color: 'primary' }); // тосты 
-//реактивное хранилище
+Vue.use(VuetifyToast, { $vuetify: vueObj.framework, color: 'primary' }); // тосты
+// реактивное хранилище
 // Vue.use(lsWatcher); нельзя использовать внутри вьюкса
 Vue.config.productionTip = false;
 Vue.prototype.$http = ApiSphera;
