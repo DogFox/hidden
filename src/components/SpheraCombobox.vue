@@ -26,9 +26,14 @@ export default Vue.extend({
      */
     value: { type: [Number, String], default: undefined },
     label: { type: String, default: 'Комбобокс' },
-    items: { type: [Object, Array], default: ()=> {return {};} },
+    items: {
+      type: [Object, Array],
+      default: () => {
+        return {};
+      },
+    },
     itemValue: { type: String, default: 'id' },
-     /**
+    /**
      * функция коллбэк для кастомного вызуального вывода элементов комбобокса
      * по-умолчанию это поле значение
      */
@@ -40,7 +45,7 @@ export default Vue.extend({
     },
     outlined: { type: Boolean, default: false },
   },
-  data () {
+  data() {
     return {
       select: null,
     };

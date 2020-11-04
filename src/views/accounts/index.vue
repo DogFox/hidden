@@ -62,6 +62,7 @@ export default Vue.extend({
       if (this.passChange) {
         await new this.$http().post('users/change_password', { old_password: this.old_pass, new_password: this.new_pass });
       }
+      this.$toast('Данные были сохранены!');
     },
   },
   watch: {

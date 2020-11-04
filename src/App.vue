@@ -34,15 +34,14 @@ export default Vue.extend({
   },
   beforeDestroy() {
     if (this.intervalID) {
-      clearInterval(this.intervalID); 
+      clearInterval(this.intervalID);
     }
   },
   methods: {
     async checkIsAuth() {
       if (this.isAuth) {
         return true;
-      }
-      else {
+      } else {
         return false;
       }
     },
@@ -60,9 +59,9 @@ export default Vue.extend({
 } */
 
 .bg {
-    height: 100vh;
-    background: url('./assets/background.jpeg') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-  }
+  height: 100vh;
+  background: url('./assets/background.jpeg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
 </style>

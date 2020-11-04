@@ -55,9 +55,9 @@ export default Vue.extend({
   },
   methods: {
     async checkRouteToken() {
-      if (this.$route && this.$route.query ) {
+      if (this.$route && this.$route.query) {
         const queryParams = this.$route.query;
-        if(queryParams.token) {
+        if (queryParams.token) {
           this.$router.replace({ query: {} });
           const isAuth = this.$store.dispatch('SIGN_IN', { token: queryParams.token });
           this.dial = false;

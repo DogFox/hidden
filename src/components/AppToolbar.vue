@@ -1,10 +1,5 @@
 <template>
-  <v-app-bar
-    app
-    class="elevation-1"
-    color="primary" 
-    elevate-on-scroll
-  >
+  <v-app-bar app class="elevation-1" color="primary" elevate-on-scroll>
     <v-toolbar-title>
       <h4>
         Тайный санта
@@ -13,25 +8,14 @@
     <sphera-action-btn class="no-border" simple-icon="mdi-arrow-left" outlined color="white" @click="$router.go(-1)" />
     <v-spacer />
 
-    <v-chip
-      class="ma-2"
-      color="primary"
-      label
-      to="/accounts"
-    >
+    <v-chip class="ma-2" color="primary" label to="/accounts">
       <v-icon left>
         mdi-account-circle-outline
       </v-icon>
       {{ login }}
     </v-chip>
 
-    <v-chip
-      v-if="isAuth"
-      class="ma-2"
-      color="primary"
-      label
-      @click="onLogout()"
-    >
+    <v-chip v-if="isAuth" class="ma-2" color="primary" label @click="onLogout()">
       <v-icon left>
         mdi-logout
       </v-icon>

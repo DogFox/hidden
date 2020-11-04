@@ -7,8 +7,8 @@
     app
     clipped
     dark
-    @mouseover.native="hover=true"
-    @mouseleave.native="hover=false"
+    @mouseover.native="hover = true"
+    @mouseleave.native="hover = false"
   >
     <v-list dense nav class="py-0">
       <v-list-item two-line style="min-height:100px">
@@ -70,10 +70,10 @@ export default Vue.extend({
     };
   },
   methods: {
-    onChange( payload: any) {
+    onChange(payload: any) {
       console.log(payload);
-      if( payload === false) {
-        this.showTitle = true;   
+      if (payload === false) {
+        this.showTitle = true;
       }
     },
     toAuthor() {
@@ -84,12 +84,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-
 .transparent {
   opacity: 0;
 }
 .show {
   opacity: 1;
-  transition: opacity .6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
 </style>

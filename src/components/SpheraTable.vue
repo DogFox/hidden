@@ -100,7 +100,7 @@ export default Vue.extend({
     },
     editItem(item: any) {
       // TODO
-      // @ts-ignore 
+      // @ts-ignore
       this.editedIndex = this.items.indexOf(item);
       this.record = Object.assign({}, item);
       this.modalDialogVisible = true;
