@@ -2,8 +2,9 @@
   <v-container>
     <v-row>
       <v-row class="justify-center">
-        <sphera-action-btn @click="onSend()">Рассылка</sphera-action-btn> 
-        <sphera-action-btn @click="showPairs = !showPairs">{{ showBtnLabel }}</sphera-action-btn> 
+        <sphera-action-btn @click="onSend()">Рассылка</sphera-action-btn>
+        <sphera-action-btn @click="onSwop()">Перемешать</sphera-action-btn>
+        <sphera-action-btn @click="showPairs = !showPairs">{{ showBtnLabel }}</sphera-action-btn>
       </v-row>
     </v-row>
     <template v-if="showPairs">
@@ -12,10 +13,13 @@
         <v-container :key="index" pa-2>
           <v-row>
             <v-col cols="3">
-              <sphera-input v-model="pair.member_name" readonly label="Имя учатсника" />
+              <sphera-input v-model="pair.member_name" readonly label="Имя участника" />
             </v-col>
             <v-col cols="3">
               <sphera-input v-model="pair.member_email" readonly label="Почта участника" />
+            </v-col>
+            <v-col cols="3">
+              <sphera-combobox v-model="pair.exception" label="Исключение" item-text="member_name" :items="members" @change="onChange(pair)" />
             </v-col>
             <v-spacer />
             <v-col cols="3">
@@ -36,7 +40,7 @@ export default Vue.extend({
   model: { prop: 'record', event: 'change' },
   props: {
     record: { type: Object, required: true },
-    draftid: { type: [Number, String], required: true},
+    draftid: { type: [Number, String], required: true },
   },
   data() {
     return {
@@ -51,26 +55,36 @@ export default Vue.extend({
     },
   },
   created() {
-      const arr = [] as any;
-      this.record.memberships.forEach( (membership: any) => {
-        arr.push({id: membership.id, member_name: membership.member_name, member_email: membership.member_email, santa_name: membership.santa_name, type: 'password'});
+    const arr = [] as any;
+    this.record.memberships.forEach((membership: any) => {
+      arr.push({
+        id: membership.id,
+        exception: membership.exception,
+        member_name: membership.member_name,
+        member_email: membership.member_email,
+        santa_name: membership.santa_name,
+        type: 'password',
       });
-      this.members = arr;
+    });
+    this.members = arr;
   },
   methods: {
     async onSwop() {
-      await this.http.post('draft/swop', {id: this.draftid});
+      await this.http.post('draft/swop', { id: this.draftid });
       this.$emit('swop');
     },
     async onSend() {
-      await this.http.post('draft/email', {id: this.draftid});
+      await this.http.post('draft/email', { id: this.draftid });
     },
-    changeType( pair: any ) {
-      if( pair.type && pair.type === 'password') {
+    changeType(pair: any) {
+      if (pair.type && pair.type === 'password') {
         this.$set(pair, 'type', '');
       } else {
         pair.type = 'password';
       }
+    },
+    async onChange(item: any) {
+      await this.http.put('membership/part_update/' + item.id, { exception: item.exception });
     },
   },
 });

@@ -29,7 +29,7 @@ export default Vue.extend({
   model: { prop: 'record', event: 'change' },
   props: {
     record: { type: Object, required: true },
-    draftid: { type: [Number, String], required: true},
+    draftid: { type: [Number, String], required: true },
   },
   data() {
     return {
@@ -38,7 +38,7 @@ export default Vue.extend({
   },
   computed: {
     member(): any {
-      if( this.record && this.record.santas && this.record.santas[0]) {
+      if (this.record && this.record.santas && this.record.santas[0]) {
         return this.record.santas[0];
       }
       return {};
@@ -46,10 +46,15 @@ export default Vue.extend({
   },
   methods: {
     async onChangeBox() {
-      await this.http.put('draft/part_update/' + this.draftid, {limit: this.record.limit, limitValue:this.record.limitValue, name: this.record.name, description: this.record.description});
+      await this.http.put('draft/part_update/' + this.draftid, {
+        limit: this.record.limit,
+        limitValue: this.record.limitValue,
+        name: this.record.name,
+        description: this.record.description,
+      });
     },
     async onChangeWishes() {
-      await this.http.put('member/part_update/' + this.member.santa, {wishes: this.member.santa_wishes});
+      await this.http.put('member/part_update/' + this.member.santa, { wishes: this.member.santa_wishes });
     },
   },
 });

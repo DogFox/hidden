@@ -2,11 +2,7 @@
   <v-card height="100%" class="opacity-color">
     <v-container>
       <v-row class="justify-center" no-gutters>
-        <v-col 
-          sm="12"
-          md="8"
-          lg="6"
-        >
+        <v-col sm="12" md="8">
           <v-card-title class="text-center justify-center christmass-color">
             <h1 class="font-weight-bold ">
               {{ record.name }}
@@ -15,11 +11,7 @@
         </v-col>
       </v-row>
       <v-row class="justify-center" no-gutters>
-        <v-col 
-          sm="12"
-          md="8"
-          lg="6"
-        >
+        <v-col sm="12" md="8">
           <v-card-subtitle class="text-center justify-center py-2 ">
             <h3 class="christmass-color">
               {{ record.description }}
@@ -28,11 +20,7 @@
         </v-col>
       </v-row>
       <template v-if="admin">
-        <v-tabs
-          v-model="tab"
-          background-color="transparent" 
-          centered
-        >
+        <v-tabs v-model="tab" background-color="transparent" centered>
           <v-tab>Основная</v-tab>
           <v-tab>Участники</v-tab>
           <v-tab>Настройки</v-tab>
@@ -75,7 +63,7 @@ interface SecretBox {
 export default Vue.extend({
   components: { CommonTab, MembersTab, SettingsTab },
   props: {
-    draftid: { type: [Number,String], default: null},
+    draftid: { type: [Number, String], default: null },
   },
   data() {
     return {
@@ -95,8 +83,8 @@ export default Vue.extend({
     },
     members(): any[] {
       const arr = [] as any;
-      this.record.memberships.forEach( membership => {
-        arr.push({id: membership.id, member: membership.member});
+      this.record.memberships.forEach(membership => {
+        arr.push({ id: membership.id, member: membership.member });
       });
       return arr;
     },
@@ -104,22 +92,21 @@ export default Vue.extend({
   methods: {
     async fetchData() {
       const result = await this.http.get('draftpermission/' + this.draftid);
-      if( result && result.admin ) {
+      if (result && result.admin) {
         this.admin = result.admin;
       }
       this.record = await this.http.get('draft/' + this.draftid, result);
     },
-    
   },
 });
 </script>
 
 <style scoped>
 .opacity-color {
-  background-color: rgba(255, 255, 255, 0.2)
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .theme--light.v-tabs-items {
-  background-color: rgba(255, 255, 255, 0.8)
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* .container {
