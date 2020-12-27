@@ -59,9 +59,24 @@ export default Vue.extend({
 } */
 
 .bg {
-  height: 100vh;
-  background: url('./assets/background.jpeg') no-repeat center center;
+  position: relative;
+  /* height: 100vh;
+  background: url('./assets/background_new.jpg') no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+  }
+
+ .bg::before {
+      background: url("./assets/background_new.jpg") no-repeat center center;
+      background-size: cover;
+      content: ' ';
+      height: 100%;
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      will-change: transform;
+      /* z-index: -1; */
 }
+
 </style>

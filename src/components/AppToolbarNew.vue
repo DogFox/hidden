@@ -61,7 +61,7 @@ export default Vue.extend({
       items: [
         { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
         { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts', isAuth: true },
-        { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts', isAuth: true },
+        { title: 'Описание', icon: 'mdi-view-dashboard', path: '/about' },
         // { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
         // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
         // { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },
