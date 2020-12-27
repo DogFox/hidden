@@ -103,10 +103,11 @@ export default Vue.extend({
 
 <style scoped>
 .opacity-color {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .theme--light.v-tabs-items {
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
 }
 
 /* .container {

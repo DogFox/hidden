@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="#6A76AB" dark prominent dense src="https://fullhdoboi.ru/wp-content/uploads/_ph/6/645556238.jpg" fade-img-on-scroll>
+  <v-app-bar app color="#6A76AB" dark prominent dense src="../assets/header.png" >
     <template v-slot:img="{ props }">
       <v-img v-bind="props" gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)" />
     </template>
@@ -59,8 +59,8 @@ export default Vue.extend({
     return {
       tab: null,
       items: [
-        { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
         { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts', isAuth: true },
+        { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
         { title: 'Описание', icon: 'mdi-view-dashboard', path: '/about' },
         // { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
         // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },

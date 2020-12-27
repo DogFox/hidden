@@ -50,33 +50,29 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-/* .back {
-  background-image:  url('./assets/background.jpeg') ;
-  background-size:auto;
-}
-#inspire {
-  background: none;
-} */
-
 .bg {
   position: relative;
-  /* height: 100vh;
-  background: url('./assets/background_new.jpg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed; */
-  }
-
- .bg::before {
-      background: url("./assets/background_new.jpg") no-repeat center center;
-      background-size: cover;
-      content: ' ';
-      height: 100%;
-      left: 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      will-change: transform;
-      /* z-index: -1; */
 }
 
+.bg::before {
+  background: url('./assets/background_new.png') no-repeat center center;
+  background-size: cover;
+  content: ' ';
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  will-change: transform;
+  /* z-index: -1; */
+}
+</style>
+
+<style >
+.opacity-color {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.theme--light.v-card {
+  background-color: rgba(255, 255, 255, 0.8);
+}
 </style>
