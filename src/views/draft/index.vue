@@ -105,7 +105,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.theme--light.v-tabs-items {
+/* .theme--light.v-tabs-items {
   background-color: rgba(255, 255, 255, 0.8);
-}
+} */
 </style>

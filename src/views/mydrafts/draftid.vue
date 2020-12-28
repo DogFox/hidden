@@ -1,6 +1,6 @@
 <template>
-  <v-card height="100%" class="opacity-color">
     <v-container>
+  <v-card height="100%" class="opacity-color">
       <v-row class="justify-center" no-gutters>
         <v-col sm="12" md="8">
           <v-card-title class="text-center justify-center christmass-color">
@@ -40,8 +40,8 @@
       <template v-else>
         <common-tab v-model="record" :draftid="draftid" />
       </template>
-    </v-container>
   </v-card>
+    </v-container>
 </template>
 
 <script lang="ts">
@@ -103,14 +103,10 @@ export default Vue.extend({
 
 <style scoped>
 .opacity-color {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .theme--light.v-tabs-items {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 0.5rem;
 }
-
-/* .container {
-  max-width: 1000px;
-} */
 </style>

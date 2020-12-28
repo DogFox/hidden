@@ -69,10 +69,14 @@ export default Vue.extend({
 </style>
 
 <style >
+.theme--light.v-card {
+  background-color: rgba(255, 255, 255, 0.8);
+}
 .opacity-color {
   background-color: rgba(255, 255, 255, 0.8);
 }
-.theme--light.v-card {
+.theme--light.v-tabs-items {
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
 }
 </style>
