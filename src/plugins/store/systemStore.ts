@@ -1,9 +1,5 @@
 import Vue from 'vue';
 import { Module, MutationTree, GetterTree, ActionTree } from 'vuex';
-// import { store } from './index';
-// import { stackDate } from '../utils/helpers';
-// import { stackAppEmitter } from '../utils/emitters';
-// import { StackApi } from '../middleware/StackApi'; // для общения с бэкэндом
 import { ApiSphera } from '../http';
 
 export interface SystemState {
@@ -27,9 +23,6 @@ const getters: GetterTree<SystemState, any> = {
 
   // аутентифицирован ли пользователь
   isAuth: (state: SystemState) => () => {
-    // console.log(localStorage.getItem('token'));
-    // console.log(state.sessionToken);
-    // console.log('auth', !!localStorage.getItem('token') || !!state.sessionToken);
     return !!state.sessionToken;
   },
 
@@ -68,17 +61,8 @@ const actions: ActionTree<SystemState, any> = {
   async SIGN_IN({ commit, dispatch }, payload: StackAuthData) {
     const token = payload?.token;
     commit('SET_LOGIN', payload?.login);
-    // if (!token && payload.login) {
-    //   const http = new StackApi();
-    //   token = await http.getToken(payload.login, payload?.password || '', !!payload.force);
-    // }
     if (token) {
       commit('SET_TOKEN', token);
-      // Проверим, а валидный ли до сих пор токен, если аутентифицируемся через него
-      // if (payload?.token) {
-      //   await dispatch('checkSystemState');
-      // }
-      // await stackAppEmitter.emitAsync('APP_USER_SIGN_IN', store);
       return true;
     }
     return false;
@@ -86,8 +70,6 @@ const actions: ActionTree<SystemState, any> = {
   // Разлогин
   async SIGN_OUT({ commit }) {
     commit('SET_TOKEN', '');
-    // await stackAppEmitter.emitAsync('APP_USER_SIGN_OUT', store);
-    // await new StackApi().logout();
     return true;
   },
   async checkSystemState({ commit, state, getters }): Promise<boolean> {
@@ -96,13 +78,6 @@ const actions: ActionTree<SystemState, any> = {
       const rec = await api.getSystemState();
       if (rec) {
         console.log(rec);
-
-        // if (!state.backendConnected) {
-        //   commit('SET_CONNECTED', true);
-        // }
-        // if (rec.пользовательФИО !== state.userName) {
-        //   commit('SET_USER', rec.пользовательФИО);
-        // }
       }
     } catch (error) {
       console.log(error);
