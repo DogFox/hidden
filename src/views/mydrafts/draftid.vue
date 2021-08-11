@@ -1,10 +1,10 @@
 <template>
-    <v-container>
-  <v-card height="100%" class="opacity-color">
+  <v-container>
+    <v-card height="100%" class="opacity-color">
       <v-row class="justify-center" no-gutters>
         <v-col sm="12" md="8">
           <v-card-title class="text-center justify-center christmass-color">
-            <h1 class="font-weight-bold ">
+            <h1 class="font-weight-bold">
               {{ record.name }}
             </h1>
           </v-card-title>
@@ -12,7 +12,7 @@
       </v-row>
       <v-row class="justify-center" no-gutters>
         <v-col sm="12" md="8">
-          <v-card-subtitle class="text-center justify-center py-2 ">
+          <v-card-subtitle class="text-center justify-center py-2">
             <h3 class="christmass-color">
               {{ record.description }}
             </h3>
@@ -40,8 +40,8 @@
       <template v-else>
         <common-tab v-model="record" :draftid="draftid" />
       </template>
-  </v-card>
-    </v-container>
+    </v-card>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -83,7 +83,7 @@ export default Vue.extend({
     },
     members(): any[] {
       const arr = [] as any;
-      this.record.memberships.forEach(membership => {
+      this.record.memberships.forEach((membership) => {
         arr.push({ id: membership.id, member: membership.member });
       });
       return arr;

@@ -9,11 +9,15 @@ const BASE_URL = process.env.VUE_APP_API_BASE_URL;
 export class ApiSphera {
   private headers = {} as any;
 
-  async get(url: string, params?: any) {
+  setTokenHeader() {
     const token = store.getters.getToken();
     if (token) {
       this.headers.Authorization = 'Token ' + token;
     }
+  }
+
+  async get(url: string, params?: any) {
+    this.setTokenHeader();
     const config = Object.assign({}, { headers: this.headers }, { params }) as AxiosRequestConfig;
     const targetUrl = BASE_URL + url;
     return axios.get(targetUrl, config).then(response => {
@@ -22,10 +26,7 @@ export class ApiSphera {
   }
 
   async getSystemState() {
-    const token = store.getters.getToken();
-    if (token) {
-      this.headers.Authorization = 'Token ' + token;
-    }
+    this.setTokenHeader();
     const targetUrl = BASE_URL + 'check_system/';
     return axios.get(targetUrl, { headers: this.headers }).then(response => {
       return response.data;
@@ -33,11 +34,7 @@ export class ApiSphera {
   }
 
   async post(url: string, item: object) {
-    const token = store.getters.getToken();
-    if (token) {
-      this.headers.Authorization = 'Token ' + token;
-    }
-
+    this.setTokenHeader();
     const targetUrl = BASE_URL + url;
     return axios.post(targetUrl + '/', item, { headers: this.headers }).then(response => {
       return response.data;
@@ -45,11 +42,7 @@ export class ApiSphera {
   }
 
   async put(url: string, item: object) {
-    const token = store.getters.getToken();
-    if (token) {
-      this.headers.Authorization = 'Token ' + token;
-    }
-
+    this.setTokenHeader();
     const targetUrl = BASE_URL + url;
     return axios.put(targetUrl + '/', item, { headers: this.headers }).then(response => {
       return response.data;
@@ -57,11 +50,7 @@ export class ApiSphera {
   }
 
   async delete(url: string, id: number) {
-    const token = store.getters.getToken();
-    if (token) {
-      this.headers.Authorization = 'Token ' + token;
-    }
-
+    this.setTokenHeader();
     const targetUrl = BASE_URL + url + '/' + id;
     return axios.delete(targetUrl, { headers: this.headers }).then(response => {
       return response.data;

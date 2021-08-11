@@ -6,45 +6,19 @@
           <v-row no-gutters>
             <sphera-input v-model="boxName" label="Название группы" />
 
-            <sphera-action-btn class="ml-8" color="blue darken-1" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>
+            <sphera-action-btn class="startBtn" color="blue darken-1" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>
           </v-row>
         </v-col>
-
-        <!-- <sphera-action-btn @click="addItem()">Добавить участника</sphera-action-btn>   -->
-
-        <!-- <v-btn @click="addItem()">
-          Добавить участника
-        </v-btn>  -->
-
-        <!-- <v-btn @click="onDraft()">Вставить в базу участников</v-btn>  -->
       </v-row>
       <v-row align="center" justify="center">
         <v-col sm="12" lg="5" md="8">
           <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
         </v-col>
       </v-row>
-      <v-row align="center" justify="center" class="pl-2 pr-2">
+      <v-row no-gutters align="center" justify="center" class="pl-2 pr-2 pb-2">
         <template v-for="item in items">
           <v-col :key="item.id" sm="12" md="6" lg="4">
-            <v-card>
-              <v-container>
-                <v-row>
-                  <v-col>
-                    <sphera-input v-model="item.name" label="ФИО" placeholder="ФИО участника" />
-                  </v-col>
-                  <v-col>
-                    <sphera-input v-model="item.email" label="Email" placeholder="EMAIL участника" />
-                  </v-col>
-
-                  <v-btn icon class="pt-6">
-                    <v-icon @click="deleteMember(item.id)"> mdi-close </v-icon>
-                  </v-btn>
-                  <!-- <v-col>
-                  <sphera-combobox v-model="item.cross" label="Исключение" :items="items" />
-                </v-col> -->
-                </v-row>
-              </v-container>
-            </v-card>
+            <new-santa :item="item" @delete="deleteMember($event)" />
           </v-col>
         </template>
       </v-row>
@@ -54,8 +28,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import NewSanta from './NewSanta.vue';
 
 export default Vue.extend({
+  components: { NewSanta },
   data() {
     return {
       file: '',
@@ -72,7 +48,7 @@ export default Vue.extend({
       this.items.push({ id: ++this.lastId });
     },
     deleteMember(id: number) {
-      const index = this.items.findIndex(item => item.id === id);
+      const index = this.items.findIndex((item) => item.id === id);
       this.items.splice(index, 1);
       this.lastId--;
     },
@@ -105,6 +81,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.startBtn {
+  position: relative;
+  left: 1em;
+  bottom: 0.5em;
+}
 /* .theme--light.v-tabs-items {
   background-color: rgba(255, 255, 255, 0.8);
 } */
