@@ -3,10 +3,10 @@
     <v-container>
       <v-row no-gutters>
         <v-col>
-          <sphera-input v-model="item.name" label="ФИО" placeholder="ФИО участника" />
+          <sphera-input v-model="item.name" label="ФИО" placeholder="ФИО участника" required />
         </v-col>
         <v-col>
-          <sphera-input v-model="item.email" label="Email" placeholder="EMAIL участника" />
+          <sphera-input v-model="item.email" label="Email" placeholder="EMAIL участника" required />
         </v-col>
 
         <div class="btn_close">

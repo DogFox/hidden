@@ -1,21 +1,21 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="6">
+      <v-col md="6" sm="12">
         <sphera-input v-model="record.name" label="Название" @change="onChangeBox()" />
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="6">
+      <v-col md="6" sm="12">
         <sphera-textarea v-model="record.description" rows="3" label="Установленное ограничение" @change="onChangeBox()" />
       </v-col>
     </v-row>
 
     <v-row justify="center">
-      <v-col cols="3">
+      <v-col md="3" sm="12">
         <v-checkbox v-model="record.limit" class="py-0 my-0" label="Ограничение бюджета" @change="onChangeBox()" />
       </v-col>
-      <v-col cols="3">
+      <v-col md="3" sm="12">
         <sphera-input v-model="record.limitValue" label="Установленное ограничение" @change="onChangeBox()" />
       </v-col>
     </v-row>

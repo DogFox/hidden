@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card class="opacity-color">
-      <v-row align="center" justify="center">
+      <v-row align="center" justify="center" class="pt-2">
         <v-col sm="12" lg="5" md="8">
           <v-row no-gutters>
             <sphera-input v-model="boxName" label="Название группы" />
@@ -53,10 +53,16 @@ export default Vue.extend({
       this.lastId--;
     },
     async onDraftAll() {
+      const membersArr = this.items.filter((item) => {
+        return item.name && item.name !== '' && item.email && item.email !== '';
+      });
+      if (membersArr.length === 0) {
+        this.$toast('Не заполнен массив участников!', { color: 'error' });
+        return;
+      }
+
       const result = this.http.post('customer/postlist', {
-        items: this.items.filter((item) => {
-          return item.name && item.name !== '';
-        }),
+        items: membersArr,
         box: { name: this.boxName, description: this.boxDescription },
       });
     },
