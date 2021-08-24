@@ -1,31 +1,28 @@
 <template>
-  <v-app-bar app color="#6A76AB" dark prominent dense src="../assets/header.png" >
-    <template v-slot:img="{ props }">
+  <v-app-bar app dense color="white">
+    <!-- prominent -->
+    <!-- dark -->
+    <!-- src="../assets/header.png"  -->
+    <!-- <template v-slot:img="{ props }">
       <v-img v-bind="props" gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)" />
-    </template>
+    </template> -->
 
-    <v-toolbar-title>Тайный санта</v-toolbar-title>
+    <v-toolbar-title class="tab--color">Тайный санта</v-toolbar-title>
 
     <v-spacer />
     <!-- {{ isAuth }} -->
     <template v-if="isAuth">
       <v-chip class="ma-2" label outlined to="/accounts">
-        <v-icon left>
-          mdi-account-circle-outline
-        </v-icon>
+        <v-icon left> mdi-account-circle-outline </v-icon>
         {{ login }}
       </v-chip>
 
       <v-btn icon>
-        <v-icon @click="onLogout()">
-          mdi-logout
-        </v-icon>
+        <v-icon @click="onLogout()"> mdi-logout </v-icon>
       </v-btn>
     </template>
     <template v-else>
-      <v-chip class="ma-2" label outlined to="/authentication">
-        Войти
-      </v-chip>
+      <v-chip class="ma-2" label outlined to="/authentication"> Войти </v-chip>
     </template>
 
     <template v-slot:extension>
@@ -62,11 +59,6 @@ export default Vue.extend({
         { title: 'Коробочки', icon: 'mdi-view-dashboard', path: '/mydrafts', isAuth: true },
         { title: 'Жеребьевка', icon: 'mdi-help-box', path: '/draft' },
         { title: 'Описание', icon: 'mdi-view-dashboard', path: '/about' },
-        // { title: 'Заказы', icon: 'mdi-view-dashboard', path: '/orders' },
-        // { title: 'Клиенты', icon: 'mdi-image', path: '/clients' },
-        // { title: 'Запчасти', icon: 'mdi-help-box', path: '/parts' },
-        // { title: 'Поставщики', icon: 'mdi-help-box', path: '/suppliers' },
-        // { title: 'Тестирование компонентов', icon: 'mdi-image', path: '/test' },
       ],
     };
   },
@@ -80,3 +72,11 @@ export default Vue.extend({
   },
 });
 </script>
+<style scoped>
+.tab--color {
+  background-color: rgb(255, 53, 53);
+  border-radius: 0.8em;
+  padding: 0 10px 0 10px;
+  color: rgb(255, 255, 255);
+}
+</style>

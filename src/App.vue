@@ -11,6 +11,9 @@
     <v-main class="bg">
       <router-view />
     </v-main>
+    <div class="bottom-trees">
+      <img src="./assets/footer.svg" />
+    </div>
   </v-app>
 </template>
 
@@ -55,7 +58,6 @@ export default Vue.extend({
 }
 
 .bg::before {
-  background: url('./assets/background_new.png') no-repeat center center;
   background-size: cover;
   content: ' ';
   height: 100%;
@@ -63,12 +65,17 @@ export default Vue.extend({
   position: fixed;
   top: 0;
   width: 100%;
-  will-change: transform;
-  /* z-index: -1; */
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 </style>
 
 <style >
+/* Переопределеяем базовые стили вьютифая */
 .theme--light.v-card {
   background-color: rgba(255, 255, 255, 0.8);
 }

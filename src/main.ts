@@ -51,7 +51,8 @@ import './assets/custom.scss'; // Кастомные стили
 const theme = {
   themes: {
     light: {
-      primary: '#00bcd4',
+      // primary: '#00bcd4',
+      primary: '#ff3535',
       secondary: '#4caf50',
       accent: '#8bc34a',
       error: '#f44336',

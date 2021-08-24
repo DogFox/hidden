@@ -5,7 +5,7 @@
         <v-col :key="i" sm="12" md="8" lg="6">
           <v-hover v-slot:default="{ hover }">
             <v-card :elevation="hover ? 12 : 2" :class="{ 'on-hover': hover }" @click="onClickBox(item)">
-              <!-- <v-img class="white--text align-end" height="150px" :src="box_background"> -->
+              <v-img class="white--text align-end" height="150px" :src="box_background">
                 <v-card-title class="title">
                   <v-row class="fill-height flex-column" justify="space-between">
                     <span class="mt-4 subheading">
@@ -17,7 +17,7 @@
                     </span>
                   </v-row>
                 </v-card-title>
-              <!-- </v-img> -->
+              </v-img>
             </v-card>
           </v-hover>
         </v-col>
@@ -57,7 +57,6 @@ export default Vue.extend({
 .v-card {
   transition: opacity 0.4s ease-in-out;
   background-color: rgba(244, 199, 163, 0.8);
-
 }
 .v-card:not(.on-hover) {
   opacity: 0.6;
