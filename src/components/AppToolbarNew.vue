@@ -1,13 +1,9 @@
 <template>
-  <v-app-bar app dense color="white">
-    <!-- prominent -->
-    <!-- dark -->
-    <!-- src="../assets/header.png"  -->
-    <!-- <template v-slot:img="{ props }">
-      <v-img v-bind="props" gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)" />
-    </template> -->
-
-    <v-toolbar-title class="tab--color">Тайный санта</v-toolbar-title>
+  <v-app-bar app dense color="white" prominent>
+    <v-toolbar-title>
+      <img src="../assets/Santa_hat.jpg" class="logo--display christmass-color" />
+      <span class="title--show title--text"> Тайный санта </span>
+    </v-toolbar-title>
 
     <v-spacer />
     <!-- {{ isAuth }} -->
@@ -33,7 +29,6 @@
       </v-tabs>
       <v-spacer />
 
-      <!-- <sphera-action-btn v-if="tab==='/draft'" color="white" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>  -->
       <v-icon large @click="toAuthor()">mdi-vk</v-icon>
     </template>
   </v-app-bar>
@@ -73,10 +68,24 @@ export default Vue.extend({
 });
 </script>
 <style scoped>
-.tab--color {
-  background-color: rgb(255, 53, 53);
-  border-radius: 0.8em;
-  padding: 0 10px 0 10px;
-  color: rgb(255, 255, 255);
+.logo--display {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  z-index: 1;
+}
+.title--show {
+  position: absolute;
+  top: 35px;
+  z-index: 10;
+}
+.title--text {
+  font-size: 25px;
+  font-weight: 500;
+}
+img {
+  display: block;
+  width: 3em;
+  height: auto;
 }
 </style>
