@@ -81,7 +81,7 @@ export default Vue.extend({
 }
 .title--text {
   font-size: 25px;
-  font-weight: 500;
+  font-weight: 400;
 }
 img {
   display: block;
