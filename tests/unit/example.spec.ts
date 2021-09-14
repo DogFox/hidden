@@ -1,12 +1,23 @@
-import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mount, shallowMount, Wrapper } from "@vue/test-utils";
+import SpheraActionBtn from '@/components/SpheraActionBtn.vue';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg },
+describe('SpheraActionBtn.vue', () => {
+  let wrapper: Wrapper<any>;
+  beforeEach(() => {
+    wrapper = mount(SpheraActionBtn);
+  });
+  afterEach(() => {
+    wrapper.destroy();
+  });
+
+  it('check button slot', () => {
+    const buttonText = 'Button';
+    const slots = {
+      default: buttonText,
+    };
+    const wrapper = shallowMount(SpheraActionBtn, {
+      slots,
     });
-    expect(wrapper.text()).toMatch(msg);
+    expect(wrapper.text()).toBe(buttonText);
   });
 });

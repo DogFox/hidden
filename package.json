@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand --no-cache --no-watchman",
     "lint": "vue-cli-service lint",
     "dev": "node --max_old_space_size=8192 node_modules/@vue/cli-service/bin/vue-cli-service.js serve --open"
   },
