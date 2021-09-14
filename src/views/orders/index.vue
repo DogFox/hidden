@@ -2,7 +2,7 @@
   <div class="client">
     <sphera-table :headers="headers" :path="path" :description="description">
       <template v-slot:modal="props">
-        <order-modal v-model="props.item" v-bind="props"></order-modal>
+        <order-modal v-model="props.item" v-bind="props" />
       </template>
     </sphera-table>
   </div>

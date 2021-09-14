@@ -3,20 +3,20 @@
     <v-container>
       <v-row>
         <v-col>
-          <sphera-input v-model="record.name" label="ФИО" hint="Введите имя клиента"></sphera-input>
+          <sphera-input v-model="record.name" label="ФИО" hint="Введите имя клиента" />
         </v-col>
       </v-row>
       <v-row>
         <v-col>
-          <sphera-input v-model="record.addres" label="Адрес"></sphera-input>
+          <sphera-input v-model="record.addres" label="Адрес" />
         </v-col>
       </v-row>
       <v-row>
         <v-col cols="8">
-          <sphera-input v-model="record.phone" label="Телефон" clearable></sphera-input>
+          <sphera-input v-model="record.phone" label="Телефон" clearable />
         </v-col>
         <v-col cols="4">
-          <sphera-input v-model="record.discount" label="Скидка" suffix="%" type="Number"></sphera-input>
+          <sphera-input v-model="record.discount" label="Скидка" suffix="%" type="Number" />
         </v-col>
       </v-row>
     </v-container>

@@ -1,6 +1,6 @@
 export const user = {
   path: 'users',
-  fields: [ 
+  fields: [
     {
       value: 'id',
       text: 'ИД',

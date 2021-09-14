@@ -1,6 +1,6 @@
 <template>
   <div class="client">
-    <sphera-table :headers="headers" :path="path"></sphera-table>
+    <sphera-table :headers="headers" :path="path" />
   </div>
 </template>
 

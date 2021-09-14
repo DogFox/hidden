@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app dense color="white" prominent>
     <v-toolbar-title>
-      <img src="../assets/Santa_hat.jpg" class="logo--display christmass-color" />
+      <img src="../assets/Santa_hat.jpg" class="logo--display christmass-color">
       <span class="title--show title--text"> Тайный санта </span>
     </v-toolbar-title>
 

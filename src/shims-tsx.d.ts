@@ -1,4 +1,4 @@
-import Vue, { VNode } from "vue";
+import Vue, { VNode } from 'vue';
 
 declare global {
   namespace JSX {
@@ -11,7 +11,6 @@ declare global {
     }
   }
 }
-
 
 declare module 'vue/types/vue' {
   export interface Vue {

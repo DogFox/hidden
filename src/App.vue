@@ -12,7 +12,7 @@
       <router-view />
     </v-main>
     <div class="bottom-trees">
-      <img src="./assets/footer.svg" />
+      <img src="./assets/footer.svg">
     </div>
   </v-app>
 </template>

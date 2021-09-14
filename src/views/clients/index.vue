@@ -2,7 +2,7 @@
   <div class="client">
     <sphera-table :headers="headers" :path="path" description="Покупатели">
       <template v-slot:modal="props">
-        <client-modal v-model="props.item" v-bind="props"></client-modal>
+        <client-modal v-model="props.item" v-bind="props" />
       </template>
     </sphera-table>
   </div>
