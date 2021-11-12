@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand --no-cache --no-watchman",
     "lint": "vue-cli-service lint",
-    "dev": "node --max_old_space_size=8192 node_modules/@vue/cli-service/bin/vue-cli-service.js serve --open"
+    "dev": "node --openssl-legacy-provider --max_old_space_size=8192 node_modules/@vue/cli-service/bin/vue-cli-service.js serve --open"
   },
   "dependencies": {
     "axios": "^0.19.2",

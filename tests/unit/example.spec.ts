@@ -1,4 +1,4 @@
-import { mount, shallowMount, Wrapper } from "@vue/test-utils";
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import SpheraActionBtn from '@/components/SpheraActionBtn.vue';
 
 describe('SpheraActionBtn.vue', () => {
@@ -19,5 +19,12 @@ describe('SpheraActionBtn.vue', () => {
       slots,
     });
     expect(wrapper.text()).toBe(buttonText);
+  });
+  it('emits click after clicking on component', async () => {
+    const wrapper = mount(SpheraActionBtn);
+    await wrapper.trigger('click');
+    debugger;
+    expect(wrapper.emitted('click')).toBeTruthy();
+    expect(wrapper.emitted('click')?.length).toBe(1);
   });
 });
