@@ -46,21 +46,24 @@ export default Vue.extend({
       file: '',
       items: [{ id: 0, name: '', email: '' }] as any[],
       cross: null,
-      lastId: 0,
       http: new this.$http(),
       boxName: 'Коробочка',
       boxDescription: '',
       loading: false,
     };
   },
+  computed: {
+    lastId(): number {
+      return this.items.length - 1;
+    },
+  },
   methods: {
     addMember() {
-      this.items.push({ id: ++this.lastId });
+      this.items.push({ id: this.lastId + 1 });
     },
     deleteMember(id: number) {
       const index = this.items.findIndex((item) => item.id === id);
       this.items.splice(index, 1);
-      this.lastId--;
     },
     async onDraftAll() {
       const membersArr = this.items.filter((item) => {

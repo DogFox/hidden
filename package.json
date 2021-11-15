@@ -1,10 +1,10 @@
 {
-  "name": "sphera-front",
+  "name": "hidden_santa",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "node --openssl-legacy-provider node_modules/@vue/cli-service/bin/vue-cli-service.js build",
     "test:unit": "vue-cli-service test:unit",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand --no-cache --no-watchman",
     "lint": "vue-cli-service lint",
