@@ -22,10 +22,10 @@
       </v-row>
       <v-row class="justify-center">
         <v-col sm="12" md="6" lg="4">
-          <sphera-input v-model="old_pass" label="Старый пароль" />
+          <sphera-input v-model="old_pass" label="Старый пароль" type="password" />
         </v-col>
         <v-col sm="12" md="6" lg="4">
-          <sphera-input v-model="new_pass" label="Новый пароль" @change="passChange = true" />
+          <sphera-input v-model="new_pass" label="Новый пароль" type="password" @change="passChange = true" />
         </v-col>
       </v-row>
       <v-row class="justify-center pa-3">
@@ -65,11 +65,11 @@ export default Vue.extend({
   methods: {
     async onChangeUser() {
       this.record = await new this.$http().put('users/part_update/' + this.record.id, { first_name: this.record.first_name, last_name: this.record.last_name });
-      this.$toast('Данные были сохранены!');
+      this.$toast('Данные были сохранены');
     },
     async onChangePassword() {
       await new this.$http().post('users/change_password', { old_password: this.old_pass, new_password: this.new_pass });
-      this.$toast('Пароль был изменен!');
+      this.$toast('Пароль был изменен');
     },
   },
   watch: {

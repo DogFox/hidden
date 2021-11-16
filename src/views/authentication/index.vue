@@ -4,32 +4,49 @@
     <v-card class="opacity-color">
       <v-row align="center" justify="center">
         <v-col sm="12" md="6" lg="5">
-          <v-row>
+          <template v-if="!restoreMode">
+            <v-row>
+              <v-col>
+                <sphera-input v-model="record.username" label="Логин" />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col>
+                <sphera-input v-model="record.password" label="Пароль" type="password" />
+              </v-col>
+            </v-row>
+            <v-row v-if="registerMode">
+              <v-col>
+                <sphera-input v-model="record.email" label="Почта" />
+              </v-col>
+            </v-row>
             <v-col>
-              <sphera-input v-model="record.username" label="Логин" />
+              <v-row align="center" justify="center">
+                <sphera-action-btn v-if="!registerMode" color="blue darken-1" block large outlined @click="onEnter()">Войти</sphera-action-btn>
+                <sphera-action-btn v-if="registerMode" color="blue darken-1" block large outlined @click="onRegister()">Зарегистрироваться</sphera-action-btn>
+              </v-row>
+              <v-row align="center" justify="center">
+                <sphera-action-btn color="black" text small @click="registerMode = !registerMode">
+                  {{ !registerMode ? 'Нет аккаунта?' : 'Уже есть аккаунт?' }}
+                </sphera-action-btn>
+              </v-row>
+              <v-row align="center" justify="center">
+                <sphera-action-btn color="black" text small @click="restoreMode = !restoreMode">
+                  Забыли пароль?
+                </sphera-action-btn>
+              </v-row>
             </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <sphera-input v-model="record.password" label="Пароль" type="password" />
-            </v-col>
-          </v-row>
-          <v-row v-if="registerMode">
+          </template>
+          <template v-else>
             <v-col>
               <sphera-input v-model="record.email" label="Почта" />
             </v-col>
-          </v-row>
-          <v-col>
-            <v-row align="center" justify="center">
-              <sphera-action-btn v-if="!registerMode" color="blue darken-1" block large outlined @click="onEnter()">Войти</sphera-action-btn>
-              <sphera-action-btn v-if="registerMode" color="blue darken-1" block large outlined @click="onRegister()">Зарегистрироваться</sphera-action-btn>
-            </v-row>
-            <v-row align="center" justify="center">
-              <sphera-action-btn color="black" text small @click="registerMode = !registerMode">
-                {{ !registerMode ? 'Нет аккаунта?' : 'Уже есть аккаунт?' }}
-              </sphera-action-btn>
-            </v-row>
-          </v-col>
+            <v-col>
+              <v-row align="center" justify="center">
+                <sphera-action-btn color="blue darken-1" block large outlined @click="onRestorePassword()">Восстановить пароль</sphera-action-btn>
+              </v-row>
+            </v-col>
+          </template>
         </v-col>
       </v-row>
     </v-card>
@@ -46,6 +63,7 @@ export default Vue.extend({
   data() {
     return {
       registerMode: false,
+      restoreMode: false,
       record: {
         email: '',
         username: '',
@@ -78,6 +96,17 @@ export default Vue.extend({
       const result = await new this.$http().post('users/register', this.record);
       if (result) {
         await this.onEnter();
+      }
+    },
+    async onRestorePassword() {
+      const result = await new this.$http().post('users/restore_password', { email: this.record.email });
+      if (result) {
+        this.$toast(result);
+
+        this.$set(this.record, 'email', '');
+        this.$set(this.record, 'username', '');
+        this.$set(this.record, 'password', '');
+        this.restoreMode = false;
       }
     },
   },
