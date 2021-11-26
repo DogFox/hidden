@@ -7,12 +7,12 @@
     </v-row>
     <v-row justify="center">
       <v-col sm="12" md="8">
-        <sphera-textarea v-model="member.member_wishes" readonly label="Список желаний одариваемого" />
+        <sphera-textarea v-model="member.member_wishes" readonly label="Список желаний одариваемого" rows="6" />
       </v-col>
     </v-row>
     <v-row justify="center">
       <v-col sm="12" md="8">
-        <sphera-textarea v-model="member.santa_wishes" label="Вы поможете своему санте, указав что бы вы хотели!" @change="onChangeWishes()" />
+        <sphera-textarea v-model="member.santa_wishes" label="Вы поможете своему санте, указав что бы вы хотели!" rows="6" @change="onChangeWishes()" />
       </v-col>
     </v-row>
 
