@@ -62,19 +62,17 @@ export class ApiSphera {
 axios.interceptors.response.use((response: AxiosResponse) => {
   // Do something with response data
   // console.log(response.data);
-
   return response;
 }, error => {
   const error_code = error.response.status;
   const error_data = error.response.data;
   // console.log('http_err', error_code);
   // console.log('http_err', error.response);
-
   if (error_code) {
     switch (+error_code) {
       // ошибка аутентификации
       case 401:
-        store.commit('SET_TOKEN', ''); // окно аутентификации
+        store.dispatch('SIGN_OUT'); // окно аутентификации
         Vue.prototype.$toast(error_data.detail, { color: 'error' });
         break;
       case 400: {

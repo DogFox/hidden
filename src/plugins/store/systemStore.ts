@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { Module, MutationTree, GetterTree, ActionTree } from 'vuex';
 import { ApiSphera } from '../http';
+import router from '../router';
 
 export interface SystemState {
   sessionToken: string | undefined; // текущий токен
@@ -70,6 +71,7 @@ const actions: ActionTree<SystemState, any> = {
   // Разлогин
   async SIGN_OUT({ commit }) {
     commit('SET_TOKEN', '');
+    router.push('/authentication');
     return true;
   },
   async checkSystemState({ commit, state, getters }): Promise<boolean> {
