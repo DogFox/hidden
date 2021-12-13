@@ -25,6 +25,9 @@ export class StateStorage {
     if (mutation.type === 'SET_TOKEN') {
       StateStorage.setItem('token', mutation.payload, 'common');
     }
+    if (mutation.type === 'SET_LOGIN') {
+      StateStorage.setItem('login', mutation.payload, 'common');
+    }
   }
 
   // загрузка данных из localstorage
@@ -32,6 +35,9 @@ export class StateStorage {
     const stateCommon = StateStorage.getState('common');
     if (stateCommon.token) {
       store.commit('SET_TOKEN', stateCommon.token);
+    }
+    if (stateCommon.login) {
+      store.commit('SET_LOGIN', stateCommon.login);
     }
   }
 }
