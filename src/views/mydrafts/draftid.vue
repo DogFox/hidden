@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-show="!loading">
     <v-row class="justify-center" no-gutters>
       <v-col>
         <v-card-title class="text-center justify-center christmass-color">
@@ -51,6 +51,7 @@ import SettingsTab from './tabs/SettingsTab.vue';
 interface SecretBox {
   id: number;
   admin: number;
+  name: string;
   limit: boolean;
   limitValue: number;
   description: string;
@@ -70,6 +71,7 @@ export default Vue.extend({
       http: new this.$http(),
       showPairs: false,
       admin: false,
+      loading: true,
     };
   },
   created() {
@@ -94,6 +96,7 @@ export default Vue.extend({
         this.admin = result.admin;
       }
       this.record = await this.http.get('draft/' + this.draftid, result);
+      this.loading = false;
     },
   },
 });

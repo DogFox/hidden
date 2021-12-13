@@ -5,7 +5,8 @@ export const axios = Axios.create({
 });
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
-const BASE_URL = process.env.VUE_APP_API_BASE_URL;
+// const BASE_URL = process.env.VUE_APP_API_BASE_URL;
+const BASE_URL = 'http://95.183.35.164:8081/api/';
 export class ApiSphera {
   private headers = {} as any;
 
