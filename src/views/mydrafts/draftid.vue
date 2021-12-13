@@ -1,46 +1,44 @@
 <template>
   <v-container>
-    <v-card height="100%" class="opacity-color">
-      <v-row class="justify-center" no-gutters>
-        <v-col>
-          <v-card-title class="text-center justify-center christmass-color">
-            <h1 class="font-weight-bold">
-              {{ record.name }}
-            </h1>
-          </v-card-title>
-        </v-col>
-      </v-row>
-      <v-row class="justify-center" no-gutters>
-        <v-col>
-          <v-card-subtitle class="text-center justify-center py-2">
-            <h3 class="christmass-color">
-              {{ record.description }}
-            </h3>
-          </v-card-subtitle>
-        </v-col>
-      </v-row>
-      <template v-if="admin">
-        <v-tabs v-model="tab" background-color="transparent" centered>
-          <v-tab>Основная</v-tab>
-          <v-tab>Участники</v-tab>
-          <v-tab>Настройки</v-tab>
-        </v-tabs>
-        <v-tabs-items v-model="tab">
-          <v-tab-item>
-            <common-tab v-model="record" :draftid="draftid" />
-          </v-tab-item>
-          <v-tab-item>
-            <members-tab v-model="record" :draftid="draftid" @swop="fetchData()" />
-          </v-tab-item>
-          <v-tab-item>
-            <settings-tab v-model="record" :draftid="draftid" />
-          </v-tab-item>
-        </v-tabs-items>
-      </template>
-      <template v-else>
-        <common-tab v-model="record" :draftid="draftid" />
-      </template>
-    </v-card>
+    <v-row class="justify-center" no-gutters>
+      <v-col>
+        <v-card-title class="text-center justify-center christmass-color">
+          <h1 class="font-weight-bold">
+            {{ record.name }}
+          </h1>
+        </v-card-title>
+      </v-col>
+    </v-row>
+    <v-row class="justify-center" no-gutters>
+      <v-col>
+        <v-card-subtitle class="text-center justify-center py-2">
+          <h3 class="christmass-color">
+            {{ record.description }}
+          </h3>
+        </v-card-subtitle>
+      </v-col>
+    </v-row>
+    <template v-if="admin">
+      <v-tabs v-model="tab" background-color="transparent" centered>
+        <v-tab>Основная</v-tab>
+        <v-tab>Участники</v-tab>
+        <v-tab>Настройки</v-tab>
+      </v-tabs>
+      <v-tabs-items v-model="tab">
+        <v-tab-item>
+          <common-tab v-model="record" :draftid="draftid" />
+        </v-tab-item>
+        <v-tab-item>
+          <members-tab v-model="record" :draftid="draftid" @swop="fetchData()" />
+        </v-tab-item>
+        <v-tab-item>
+          <settings-tab v-model="record" :draftid="draftid" />
+        </v-tab-item>
+      </v-tabs-items>
+    </template>
+    <template v-else>
+      <common-tab v-model="record" :draftid="draftid" />
+    </template>
   </v-container>
 </template>
 
@@ -102,11 +100,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.opacity-color {
-  background-color: rgba(255, 255, 255, 0.8);
-}
 .theme--light.v-tabs-items {
-  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 0.5rem;
 }
 </style>

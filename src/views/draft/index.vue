@@ -8,29 +8,27 @@
       />
     </template>
     <template v-else>
-      <v-card class="opacity-color">
-        <v-row align="center" justify="center" class="pt-2">
-          <v-col sm="12" lg="5" md="8">
-            <v-row no-gutters>
-              <sphera-input v-model="boxName" label="Название группы" />
+      <v-row align="center" justify="center" class="pt-2">
+        <v-col sm="12" lg="5" md="8">
+          <v-row no-gutters>
+            <sphera-input v-model="boxName" label="Название группы" />
 
-              <sphera-action-btn class="startBtn" color="blue darken-1" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>
-            </v-row>
+            <sphera-action-btn class="startBtn" color="blue darken-1" outlined @click="onDraftAll()">Замутить санту</sphera-action-btn>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-row align="center" justify="center">
+        <v-col sm="12" lg="5" md="8">
+          <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
+        </v-col>
+      </v-row>
+      <v-row no-gutters align="center" justify="center" class="pl-2 pr-2 pb-2">
+        <template v-for="item in items">
+          <v-col :key="item.id" sm="12" md="6" lg="4">
+            <new-santa :item="item" @delete="deleteMember($event)" />
           </v-col>
-        </v-row>
-        <v-row align="center" justify="center">
-          <v-col sm="12" lg="5" md="8">
-            <sphera-input v-model="boxDescription" label="Описание группы" placeholder="Придумайте короткое описание вашей группы" />
-          </v-col>
-        </v-row>
-        <v-row no-gutters align="center" justify="center" class="pl-2 pr-2 pb-2">
-          <template v-for="item in items">
-            <v-col :key="item.id" sm="12" md="6" lg="4">
-              <new-santa :item="item" @delete="deleteMember($event)" />
-            </v-col>
-          </template>
-        </v-row>
-      </v-card>
+        </template>
+      </v-row>
     </template>
   </v-container>
 </template>
@@ -108,7 +106,4 @@ export default Vue.extend({
   left: 1em;
   bottom: 0.5em;
 }
-/* .theme--light.v-tabs-items {
-  background-color: rgba(255, 255, 255, 0.8);
-} */
 </style>
